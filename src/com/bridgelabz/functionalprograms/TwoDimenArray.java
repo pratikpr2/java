@@ -1,7 +1,7 @@
-
 /******************************************************************************
  *  
- *  Purpose: To Check whether an Year is Leap or Not
+ *  Purpose: To create 2D Array of integers, doubles, or booleans from
+ *  standard input
  *
  *  @author  Pratik Prakash
  *  @version 1.0
@@ -12,10 +12,13 @@ package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class LeapYear {
+public class TwoDimenArray {
+	
 	public static void main(String[] args) {
-		System.out.println("Enter a four digit year");
-		int year = Utility.userIntegerInput();
-		Utility.leapYear(year);
+		System.out.println("Please Enter number of rows");
+		int m = Integer.parseInt(Utility.userStringInput());
+		System.out.println("Please Enter number of columns");
+		int n = Integer.parseInt(Utility.userStringInput());
+		Utility.setArray(m,n);
 	}
 }

@@ -13,7 +13,7 @@ import com.bridgelabz.utility.Utility;
 public class PrimeFactorization {
 	public static void main(String[] args) {
 		System.out.println("Enter a Number:");
-		int n =Integer.parseInt(Utility.userInput());
+		int n =Integer.parseInt(Utility.userStringInput());
 		Utility.primeFactorization(n);
 	}
 }

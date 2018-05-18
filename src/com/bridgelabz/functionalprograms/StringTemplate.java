@@ -19,6 +19,6 @@ public class StringTemplate {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter username:");
 			String n = sc.next();
-			System.out.println("Hello "+ Utility.FormatString(n)+", How are you?");
+			System.out.println("Hello "+ Utility.formatString(n)+", How are you?");
 		}
 }
