@@ -8,7 +8,10 @@
  *
  ******************************************************************************/
 package com.bridgelabz.utility;
+import java.util.Random;
 import java.util.Scanner;
+import java.security.SecureRandom;
+
 public class Utility {
 	
 	public static String userInput() {
@@ -99,7 +102,7 @@ public class Utility {
 		int win = 0;
 		int loose = 0;
 		int count = n;
-		while(count>0 && stack!=goal && stack !=0) {
+		while(count>0 && stack!=goal  ||stack >0) {
 			double ran = Math.random()*10;
 			if(ran > 5) {
 				win++;
@@ -121,4 +124,27 @@ public class Utility {
 		    System.out.println("Percentage Of Win = "+per_win);
 		    System.out.println("Percentage Of Loose = "+per_loose);
 	}
+
+
+/* ------------------------------------------------------------------------- */
+/*Method To generate Coupon code*/
+/* @param takes int n as number of Distinct Coupons required*/ 
+	public static void generateCoupon(int n){
+		int count = n;
+		while(count >0) {
+			StringBuilder sb = new StringBuilder();
+			char[] arr = "1234567890".toCharArray();
+		    Random random = new SecureRandom();
+		    for(int i=0; i < 6; i++) {
+		    	char c = arr[random.nextInt(arr.length)];
+		    	sb.append(c);
+		    	}
+			String out = sb.toString();
+			System.out.println(out);
+			count--;
+		 }
+	}
 }
+
+
+
