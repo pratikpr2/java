@@ -96,6 +96,7 @@ public class Utility {
 	}
 /* ------------------------------------------------------------------------- */
 /*Method for the gambling Game */
+/*@param int s denotes stack, int g denotes g, int n denotes Gambling trials*/
 	public static void gamblingGame(int s,int g,int n) {
 		int stack=s;
 		int goal = g;
