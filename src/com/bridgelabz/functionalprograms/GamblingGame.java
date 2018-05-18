@@ -1,3 +1,12 @@
+/******************************************************************************
+ *  
+ *  Purpose: Simulate a Gambling Game to predict Win & Loss Percentage
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   17-05-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
