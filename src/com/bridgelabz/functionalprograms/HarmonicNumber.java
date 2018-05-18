@@ -14,13 +14,8 @@ import java.util.Scanner;
 import com.bridgelabz.utility.Utility;
 public class HarmonicNumber {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the range for harmonic numbers:");
-		int n = sc.nextInt();
-		while(n<=0){
-			System.out.println("Enter a Valid Natural Number");
-			n =sc.nextInt();
-		}
+		int n = Utility.userIntegerInput();
 		Utility.harmonicNumber(n);
 	}
 }

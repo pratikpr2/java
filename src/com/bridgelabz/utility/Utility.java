@@ -91,13 +91,19 @@ public class Utility {
 	/* Method to print a series of Harmonic number and its Sum */
 	/* @param int n represent the range of Harmonic series */
 	public static void harmonicNumber(int n) {
+		if(n<=0) {
+			System.out.println("Enter valid number");
+			harmonicNumber(userIntegerInput());
+		}
 		float temp = 0;
 		for (float i = 1; i <= n; i++) {
 			System.out.print("1/" + i + " + ");
 			temp += 1 / i;
 		}
+		if(temp!=0) {
 		System.out.print("= " + temp);
 		System.out.println();
+		}
 	}
 
 	/* ------------------------------------------------------------------------- */

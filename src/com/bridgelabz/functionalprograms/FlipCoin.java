@@ -15,9 +15,8 @@ import com.bridgelabz.utility.Utility;
 public class FlipCoin {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number of times to flip coin");
-		int n = sc.nextInt();
+		int n = Utility.userIntegerInput();
 		Utility.funFlipCoin(n);
 	}
 
