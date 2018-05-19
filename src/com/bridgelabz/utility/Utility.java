@@ -9,12 +9,14 @@
  ******************************************************************************/
 package com.bridgelabz.utility;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.security.SecureRandom;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.lang.System;
+import java.lang.reflect.Array;
 
 public class Utility {
 	/*
@@ -27,7 +29,7 @@ public class Utility {
 	 *  Method to take user Input as String 
 	 */
 	public static String userStringInput() {
-		String string = scanner.next();
+		String string = scanner.nextLine();
 		return string;
 	}
 	/*
@@ -345,8 +347,35 @@ public class Utility {
 		}
 	}
 /* ------------------------------------------------------------------------- */	
-
-	
+	/*
+	 * Method to Check String is Anagram or Not
+	 * @param str1 String 
+	 */
+	public static void checkAnagram(String str1, String str2) {
+		StringBuilder s1 = new StringBuilder();
+		StringBuilder s2 = new StringBuilder();
+		String string1 = str1.toLowerCase();
+		string1 = string1.replace(" ","");
+		String string2 = str2.toLowerCase();
+		string2 = string2.replace(" ","");
+		if(string1.length()==string2.length()) {
+			char[] arr1 = string1.toCharArray();
+			char[] arr2 = string2.toCharArray();
+			Arrays.sort(arr1);
+			Arrays.sort(arr2);
+		
+			for(int i = 0; i < string1.length(); i++) {
+					s1.append(arr1[i]);
+					s2.append(arr2[i]);
+			}
+		}else {
+			System.out.println("Not Anagram");
+		}
+		if(s1.toString().equals(s2.toString())) {
+			System.out.println("Anagram");
+		}else 
+			System.out.println("Not Anagram");
+	}
 	
 	
 	
