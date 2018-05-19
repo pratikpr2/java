@@ -320,10 +320,34 @@ public class Utility {
 		double root2 = (-b - Math.pow(delta, 0.5))/ (2*a);
 		System.out.println("The Roots of the Equation are:" + root1 + " , "+ root2);
 	}
-	
-	
-	
-	
+/* ------------------------------------------------------------------------- */		
+	/*
+	 * Method to calculate the Wind Chill
+	 * @param args contains two command line arguments temperature 't' 
+	 * and wind Speed 'v'
+	 */
+	public static void getWindChill(String[] args) {
+		double t=0;
+		double v=0;
+		try{
+			 t = Double.parseDouble(args[0]); // Temperature in Fahrenheit
+		     v = Double.parseDouble(args[1]); // Wind Speed in miles per hour
+		}
+		catch(Exception e) {
+			System.out.println("Invalid Input");
+		}
+		 if(t > 50 || v > 120 || v < 3 ) {
+			System.out.println("Range t = [t<50], Range v = [3<v<120]");
+		}
+		else {
+			double windChill = 35.74 + 0.6215*t + (0.4275*t - 35.75)* Math.pow(v,0.16);
+			System.out.println("The Wind Chill is : "+windChill);
+		}
+	}
+/* ------------------------------------------------------------------------- */	
+	public static void checkAnagram(String str1, String str2) {
+		
+	}
 	
 	
 	
