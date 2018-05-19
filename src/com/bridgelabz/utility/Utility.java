@@ -345,9 +345,7 @@ public class Utility {
 		}
 	}
 /* ------------------------------------------------------------------------- */	
-	public static void checkAnagram(String str1, String str2) {
-		
-	}
+
 	
 	
 	
