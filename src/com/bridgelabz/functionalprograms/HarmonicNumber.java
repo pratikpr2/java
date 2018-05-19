@@ -9,9 +9,9 @@
  ******************************************************************************/
 
 package com.bridgelabz.functionalprograms;
-import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
+
 public class HarmonicNumber {
 	public static void main(String[] args) {
 		System.out.println("Enter the range for harmonic numbers:");

@@ -1,6 +1,6 @@
 /******************************************************************************
  *  
- *  Purpose: To Calculate Distance From origin(0,0) 
+ *  Purpose: To Find All the Permuted Combination of a String 
  *
  *  @author  Pratik Prakash
  *  @version 1.0
@@ -12,10 +12,12 @@ package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class Distance {
+public class StringPermute {
 	
 	public static void main(String[] args) {
-		Utility.funDistance(args);
+		System.out.println("Enter a String:");
+		String string = Utility.userStringInput();
+		System.out.println("Permuted Strings are:");
+		Utility.stringPermute(string,0,string.length()-1);
 	}
-	
 }

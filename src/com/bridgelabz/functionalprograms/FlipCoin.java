@@ -9,7 +9,6 @@
  ******************************************************************************/
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
 import com.bridgelabz.utility.Utility;
 
 public class FlipCoin {

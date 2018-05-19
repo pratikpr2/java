@@ -1,6 +1,6 @@
 /******************************************************************************
  *  
- *  Purpose: To Calculate Distance From origin(0,0) 
+ *  Purpose: To Simulate a Stopwatch to calculate Time Lapse
  *
  *  @author  Pratik Prakash
  *  @version 1.0
@@ -12,10 +12,9 @@ package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class Distance {
-	
+public class StopWatch {
 	public static void main(String[] args) {
-		Utility.funDistance(args);
+		Utility.timeLapse();
 	}
-	
+
 }

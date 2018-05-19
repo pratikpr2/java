@@ -13,6 +13,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.security.SecureRandom;
 import java.io.PrintWriter;
+import java.lang.Math;
+import java.lang.System;
 
 public class Utility {
 	/*
@@ -28,7 +30,26 @@ public class Utility {
 		String string = scanner.next();
 		return string;
 	}
-
+	/*
+	 *  Method to take user Input as Long
+	 */
+	public static long userLongInput() {
+		long longInt= scanner.nextLong();
+		return longInt;
+	}
+	
+	public static char userCharInput() {
+		char[] c = scanner.next().toCharArray();
+		if(c.length>1) {
+			c = scanner.nextLine().toCharArray();
+		}
+		try{
+			return c[0];
+		}catch(Exception e) {
+			System.out.println("Enter Valid Input");
+			return userCharInput();
+		}
+	}
 	/*
 	 *  Method to take user Input as number 
 	 */
@@ -199,7 +220,6 @@ public class Utility {
 	public static void distinctTriplet(int numberOfElements) {
 		int[] arr = new int[numberOfElements];
 		int count = 0;
-		int temp[] = new int[3];
 		for (int i =0; i<arr.length; i++) {
 			arr[i] = userIntegerInput();
 		}
@@ -217,17 +237,89 @@ public class Utility {
 			System.out.println("Numbers of Triplets"+count);
 		
 }
+/* ------------------------------------------------------------------------- */	
+	/*
+	 * Method to Print Euclidean distance from Origin(0,0)
+	 * @param takes String arguments From command line
+	 */
+	public static void funDistance(String[] args) {
+		double res= Math.pow((Math.pow(Double.parseDouble(args[0]), 2)+Math.pow(Double.parseDouble(args[1]), 2)), 0.5);
+		System.out.println(res);
+	}
+/* ------------------------------------------------------------------------- */	
+	/*
+	 * Method to Swap consecutive String 
+	 * @param s String Value
+	 * @param i is position n
+	 * @param j is position n+1
+	 */
+	public static String stringSwap(String s,int i, int j) {
+		char temp;
+		char[] arr = s.toCharArray();
+		temp=arr[i];
+		arr[i]=arr[j];  
+		arr[j]=temp;
+		return String.valueOf(arr);
+	}
 	
+	/*
+	 * Method to permute String Recursively
+	 * @param str to calculate permuted String
+	 * @param l starting index
+	 * @param r end index
+	 */
+	public static void stringPermute(String str,int l, int r) {
+		if(l==r) {
+			System.out.println(str);
+		}
+		else {
+			for(int i=l;i< str.length();i++) {
+				str= stringSwap(str,l,i);
+				stringPermute(str,l+1,r);
+				str= stringSwap(str,l,i);
+				
+			}
+		}
+	}
+/* ------------------------------------------------------------------------- */	
+	/*
+	 * Method asks User to initiate stop Watch
+	 */
+	public static long startTimer() {
+		System.out.println("Press Any Key to Start Timer");
+		userCharInput();
+		System.out.println("Timer Started....");
+		long startTime = System.currentTimeMillis();
+		return startTime;
+	}
+	/*
+	 * Method asks User to End the Stopwatch
+	 */
+	public static long endTimer() {
+		System.out.println("Press Any Key to end Timer");
+		userCharInput();
+		long endTimer = System.currentTimeMillis();
+		return endTimer;
+	}
+	/*
+	 * Method Calculates the Time Lapse for the interval
+	 */
+	public static void timeLapse() {
+		double start = startTimer();
+		double end = endTimer();
+		System.out.println("Time Lapse: " + (end-start)+" milliseconds");
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*
+	 * Method to Calculate Roots of a quadratic equation
+	 * @param a,b and c takes the constrains of a quadratic equation
+	 */
+	public static void getRoots(int a, int b, int c) {
+		double delta = Math.pow(b, 2) - (4*a*c);
+		double root1 = (-b + Math.pow(delta, 0.5))/ (2*a);
+		double root2 = (-b - Math.pow(delta, 0.5))/ (2*a);
+		System.out.println("The Roots of the Equation are:" + root1 + " , "+ root2);
+	}
 	
 	
 	
