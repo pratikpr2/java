@@ -16,7 +16,6 @@ import java.security.SecureRandom;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.lang.System;
-import java.lang.reflect.Array;
 
 public class Utility {
 	/*
@@ -288,19 +287,15 @@ public class Utility {
 	 * Method asks User to initiate stop Watch
 	 */
 	public static long startTimer() {
-		System.out.println("Press Any Key to Start Timer");
-		userCharInput();
 		System.out.println("Timer Started....");
-		long startTime = System.currentTimeMillis();
+		long startTime = System.nanoTime();
 		return startTime;
 	}
 	/*
 	 * Method asks User to End the Stopwatch
 	 */
 	public static long endTimer() {
-		System.out.println("Press Any Key to end Timer");
-		userCharInput();
-		long endTimer = System.currentTimeMillis();
+		long endTimer = System.nanoTime();
 		return endTimer;
 	}
 	/*
@@ -309,7 +304,7 @@ public class Utility {
 	public static void timeLapse() {
 		double start = startTimer();
 		double end = endTimer();
-		System.out.println("Time Lapse: " + (end-start)+" milliseconds");
+		System.out.println("Time Lapse: " + (end-start)+" nanoseconds");
 	}
 	
 	/*
@@ -349,7 +344,7 @@ public class Utility {
 /* ------------------------------------------------------------------------- */	
 	/*
 	 * Method to Check String is Anagram or Not
-	 * @param str1 String 
+	 * @param str1 String and str2 String2 checks the two strings are anagram or not
 	 */
 	public static void checkAnagram(String str1, String str2) {
 		StringBuilder s1 = new StringBuilder();
@@ -376,10 +371,204 @@ public class Utility {
 		}else 
 			System.out.println("Not Anagram");
 	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to Check Prime Numbers
+	 * @param int n checks for a number n is prime or not 
+	 */
 	
+	public static boolean checkPrime(int n) {
+		if(n==0 || n==1) {
+			return false;
+		}
+		else {
+			for(int i = 2; i < n/2 ; i++) {
+				if(n%i==0) {
+					return false;
+				}		
+			}
+			return true;
+		}
+	}
+	/*
+	 * Method to count Prime number for a range
+	 * @param int i takes the number to check Prime
+	 */
+	public static void countPrime(int i) {
+		while(i > 0) {
+			if(checkPrime(i)){ 
+				System.out.println(i+" is Prime");
+			}
+		i--;
+		}
+	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to check to check Prime Palindrome Numbers
+	 * @param int n takes the range to check
+	 */
+	public static void checkPrimePalindrome(int n) {
+		while(n > 0) {
+			if(checkPrime(n) && checkPalindrome(n)) {
+				System.out.println(n+ " is Prime Palindrome");
+			}
+			n--;
+		}
+	}
 	
+	/*
+	 * Method to check Palindrome Numbers
+	 * @param int n takes the number to check Palindrome
+	 */
+	public static boolean checkPalindrome(int n) {
+		int num =n;
+		int m = 0;
+		while(num > 0) {
+			m = m*10 + num%10;
+			num = num/10;
+		}
+		if(m == n) {
+			return true;
+		}
+		else return false;
+	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to Initialize an array from a user
+	 */
+	public static int[] intArray() {
+		System.out.println("Enter the size of array");
+		int n = userIntegerInput();
+		int[] arr = new int[n];
+		System.out.println("Enter the elements for the Array");
+		for(int i =0; i < arr.length;i++) {
+			arr[i]=userIntegerInput();
+		}
+		return arr;
+	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to sort an array
+	 */
+	public static int[] sortArray(int[] arr) {
+		Arrays.sort(arr);
+		return arr;
+	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to search an element in an Array Using binary search
+	 * @param int arr[] takes an array 
+	 * @param int l take the first element,
+	 * @param int h takes last element
+	 * @param int x takes the element to search
+	 */
+	public static int intBinarySearch(int arr[], int l, int h, int x) {
+		if( h >= l) {
+			int mid = l + (h-l)/2;
+			if(arr[mid]==x) {
+				return mid;
+			}
+			else if(x < arr[mid]) {
+				return intBinarySearch(arr,l,mid-1,x);
+			}
+			else return intBinarySearch(arr,mid+1,h,x);
+		}
+		return -1;
+	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to initiate Insertion Sort on an array
+	 * @param int[] arr takes the array to perform the sorting
+	 */
+	public static void intInsertionSort(int[] arr) {
+		int n = arr.length;
+		for(int i=1; i<n; ++i) {
+			int key = arr[i];
+			int j = i-1;
+			while(j>=0 && arr[j]>key) {
+				arr[j+1]=arr[j];
+				j = j-1;
+			}
+			arr[j+1]=key;
+		}
+	}
+/* ------------------------------------------------------------------------- */	
+	/*
+	 * Method to initiate Bubble Sort on an array
+	 * @param int arr takes the array to perform the sorting
+	 */
+	public static void intBubbleSort(int[] arr) {
+		for(int i=0; i< arr.length-1;i++) {
+			for(int j =0; j< arr.length-i-1; j++) {
+				if(arr[j]>arr[j+1]) {
+					int temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+		}
+	}
+/* ------------------------------------------------------------------------- */			
+	/*
+	 * Method to search a character from s string Using Binary Search
+	 * @param string s takes string and char key checks for the character
+	 */
+	public static int stringBinarySearch(String s, char key) {
+		char[] c = s.toCharArray();
+		Arrays.sort(c);
+		int start = 0;
+		int end = s.length() - 1;
+		while (start <= end) {
+			int mid = (start + end) / 2;
+			if (key == c[mid]) {
+				return mid;
+				}
+			if (key < c[mid]) {
+				end = mid - 1;
+				} 
+			else {
+				start = mid + 1;
+			}
+		}
+		return -1;
+	}
 	
-	
-	
+	public static char[] stringInsertionSort(String arr) {
+		char[] arr1= arr.toCharArray();
+		int n = arr1.length;
+		for(int i=1; i<n; ++i) {
+			char key = arr1[i];
+			int j = i-1;
+			while(j>=0 && arr1[j]>key) {
+				arr1[j+1]=arr1[j];
+				j = j-1;
+			}
+			arr1[j+1]=key;
+		}
+		return arr1;
+	}
+	public static char[] stringBubbleSort(String arr) {
+		char[] arr1 = arr.toCharArray();
+		for(int i =0; i< arr1.length-1;i++) {
+			for(int j =0; j<arr1.length-i-1;j++) {
+				char temp = arr1[j];
+				arr1[j]=arr1[j+1];
+				arr1[j+1] = temp;
+			}
+		}
+		return arr1;
+	}
+	public static int guessGame(int arr[], int l, int h) {
+			int mid = l + (h-l)/2;
+			System.out.println("Is your Number greater than" + mid);
+			int a = userIntegerInput();
+			if(a == 0){
+				return guessGame(arr,l,mid-1);
+			}
+			else if(a==1) guessGame(arr,mid+1,h);
+			else return arr[mid];
+
+	}
+		
 	
 }
