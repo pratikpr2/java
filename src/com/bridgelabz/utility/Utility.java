@@ -722,7 +722,12 @@ public class Utility {
 			return 0;
 		}
 	}
-	
+	/*
+	 * Method to check a day for a particular date
+	 * @param m takes month in digit
+	 * @param d takes dates in digit
+	 * @param y takes year in digit
+	 */
 	public static void dayOfWeek(int m ,int d, int y) {
 		int y1 = y - (14-m)/12;
 		int x = y1 + y1/4 - y1/100 +y1/400;
@@ -751,6 +756,28 @@ public class Utility {
 		}
 		else
 			System.out.println("Error");
+		
+	}
+	
+	/*
+	 * Method to convert Temperatures
+	 */
+	public static long temperatureConversion() {
+		System.out.println("Enter 1 to convert from Celsius to Fahrenheit");
+		System.out.println("Enter 0 to convert from Fahrenheit to Celsius");
+		int n = userIntegerInput();
+		switch(n) {
+		case 1:
+			System.out.println("Enter Temperature in Celsius");
+			long d = userLongInput();
+			return ((d*(9/5))+32);
+		case 0:
+			System.out.println("Enter Temperature in Fahrenheit");
+			long d1 = userLongInput();
+			return ((d1-32)*5/9);
+		default:
+			return -1;
+		}
 		
 	}
 		
