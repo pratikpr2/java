@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.security.SecureRandom;
+import java.io.File;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.lang.System;
@@ -532,7 +533,11 @@ public class Utility {
 		}
 		return -1;
 	}
-	
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to Sort a String using insertion sort algorithm
+	 * @param String arr takes the string to perform sorting
+	 */
 	public static char[] stringInsertionSort(String arr) {
 		char[] arr1= arr.toCharArray();
 		int n = arr1.length;
@@ -547,6 +552,11 @@ public class Utility {
 		}
 		return arr1;
 	}
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to Sort a String using Bubble sort algorithm
+	 * @param String arr takes the string to perform sorting
+	 */
 	public static char[] stringBubbleSort(String arr) {
 		char[] arr1 = arr.toCharArray();
 		for(int i =0; i< arr1.length-1;i++) {
@@ -558,17 +568,52 @@ public class Utility {
 		}
 		return arr1;
 	}
-	public static int guessGame(int arr[], int l, int h) {
-			int mid = l + (h-l)/2;
-			System.out.println("Is your Number greater than" + mid);
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to guess search Numbers Using Binary search algorithm
+	 * @param arr takes a range of number to guess
+	 * @param l takes the starting number of range
+	 * @param h takes the last number of the range
+	 */
+	public static int guessGame(int[] arr, int l, int h) {
+		while(h>l) {
+			int mid = l+ (h-l)/2;
+			System.out.println("Is your Number greater than " + (mid+1));
+			System.out.println("Press 1 if yes press 0 If No Else Press any Number");
 			int a = userIntegerInput();
-			if(a == 0){
+			switch(a) {
+			case 1: 
+				return guessGame(arr,mid+1,h);
+			case 0:
 				return guessGame(arr,l,mid-1);
+			default:
+				return mid+1;
 			}
-			else if(a==1) guessGame(arr,mid+1,h);
-			else return arr[mid];
-
+		}return -1;
 	}
-		
+/* ------------------------------------------------------------------------- */
+	/*
+	 * Method to read an input file in the form of String Array
+	 */
+	public static String[] fileContents() {
+		String[] store = new String[10];
+		try {
+			Scanner input = new Scanner(new File("file.txt"));
+			while(input.hasNextLine()) {
+				String msg = input.nextLine();
+				msg=msg.toLowerCase();
+				msg = msg.replace(",","");
+				msg = msg.replace("?", " ");
+				msg= msg.replace(".", " ");
+				store =msg.split(" ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return store;
+	}
+/* ------------------------------------------------------------------------- */	
+
+
+}	
 	
-}
