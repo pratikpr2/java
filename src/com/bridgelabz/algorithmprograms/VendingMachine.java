@@ -1,23 +1,21 @@
 /******************************************************************************
  *  
- *  Purpose: To Check Numbers that are Palindrome Primes. 
+ *  Purpose: To Return fewest Notes from a Vending Machine  
  *
  *  @author  Pratik Prakash
  *  @version 1.0
  *  @since   21-05-2018
  *
  ******************************************************************************/
-
 package com.bridgelabz.algorithmprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class PrimePalindrome {
+public class VendingMachine {
 	
 	public static void main(String[] args) {
-		System.out.println("Enter the Range to Check Prime Palindrom");
-		int range = Utility.userIntegerInput();
-		Utility.checkPrimePalindrome(range);
+		System.out.println("Enter The Amount To Dispence: ");
+		int n = Utility.userIntegerInput();
+		Utility.countMoney(n,1);
 	}
-
 }

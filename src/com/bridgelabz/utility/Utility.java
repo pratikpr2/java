@@ -613,7 +613,173 @@ public class Utility {
 		return store;
 	}
 /* ------------------------------------------------------------------------- */	
-
-
+	/*
+	 * Method to merge Sort an Array
+	 * @param arr takes arrays and subarrays
+	 * @param int l marks the first of array
+	 * @param int m marks the mid intersection of array
+	 * @param int r marks the last element of array
+	 */
+	public static void mergeFunc(int[] arr,int l,int m, int r) {
+		int n1 = m-l+1;
+		int n2 = r-m;
+		
+		int[] left = new int[n1];
+		int[] right = new int[n2];
+		
+		for(int i=0;i<n1;i++) {
+			left[i]=arr[l+i];
+		}
+		for(int j=0;j<n2;j++) {
+			right[j]=arr[m+1+j];
+		}
+		
+		int i=0,j=0;
+		int k = l;
+		
+		while(i<n1 && j<n2) {
+			if(left[i] <= right[j]) {
+				arr[k] = left[i];
+				i++;
+			}
+			else {
+				arr[k] = right[j];
+				j++;
+			}
+			k++;
+		}
+		while(i<n1) {
+			arr[k] = left[i];
+			i++;
+			k++;
+		}
+		while(j<n2) {
+			arr[k] = right[j];
+			j++;
+			k++;
+		}
+		
+	}
+	/*
+	 * Method to implement Merge Sort
+	 * @param arr takes the arrays and sub array
+	 * @param int l marks the first element of array
+	 * @param int r marks the end element of the array
+	 */
+	public static void mergeSort(int[] arr,int l,int r) {
+		if(l<r) {
+			int m = (l+r)/2;
+			mergeSort(arr,l,m);
+			mergeSort(arr,m+1,r);
+			mergeFunc(arr,l,m,r);
+		}
+	}	
+/* ------------------------------------------------------------------------- */		
+	/*
+	 * Method to Count minimum Notes to be Withdrawn
+	 * @param int n takes the money
+	 * @param int l checks the least notes to be dispenced
+	 */
+	public static void countMoney(int n,int l) 
+	{
+		while(passMoney(l)>0) 
+		{
+			if(n>=passMoney(l)) 
+			{
+				System.out.println(passMoney(l)+" Rupees Note: "+ (n/passMoney(l)));
+				n=n%passMoney(l);
+				countMoney(n,l);
+			}
+			else countMoney(n,l+1);
+		}
+		
+			
+	}
+	/*
+	 * Method to pass different Currency Notes 
+	 * @param int i denotes total types of currency Notes availaible
+	 */
+	public static int passMoney(int i) {
+		
+		switch(i) {
+		case 1:
+			return 1000;
+		case 2:
+			return 500;
+		case 3: 
+			return 100;
+		case 4:
+			return 50;
+		case 5:
+			return 10;
+		case 6:
+			return 5;
+		case 7:
+			return 2;
+		case 8:
+			return 1;
+		default:
+			return 0;
+		}
+	}
+	
+	public static void dayOfWeek(int m ,int d, int y) {
+		int y1 = y - (14-m)/12;
+		int x = y1 + y1/4 - y1/100 +y1/400;
+		int m1 = m + 12*((14-m)/12) -2;
+		int d1 = (d+x+31*m1/12)%7;
+		if(d1==0) {
+			System.out.println("Sunday");
+		}
+		else if(d1==1) {
+			System.out.println("Monday");
+		}
+		else if(d1==2) {
+			System.out.println("Tuesday");
+		}
+		else if(d1==3) {
+			System.out.println("Wednesday");
+		}
+		else if(d1==4) {
+			System.out.println("Thursday");
+		}
+		else if(d1==5) {
+			System.out.println("Friday");
+		}
+		else if(d1==6) {
+			System.out.println("Saturday");
+		}
+		else
+			System.out.println("Error");
+		
+	}
+		
 }	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+
 	
