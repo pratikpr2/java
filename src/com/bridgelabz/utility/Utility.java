@@ -71,9 +71,9 @@ public class Utility {
 		}
 
 	}
-	//public static <T extends Comprable<T>> T genArray
 	/*
-	 *  Method to format a String to letters only 
+	 *  Method to format a String to letters only
+	 *  @param s passes a user String 
 	 */
 
 	public static String formatString(String s) {
@@ -107,7 +107,7 @@ public class Utility {
 	/* ------------------------------------------------------------------------- */
 
 	/* Method to check an year is leap or not */
-	/* @param String s takes user input to check for leap year */
+	/* @param int year takes user input to check for leap year */
 	public static void leapYear(int year) {
 		if (year % 4 == 0 || (year % 400 == 0 && year % 100 == 0)) {
 			System.out.println("Leap year");
@@ -116,8 +116,9 @@ public class Utility {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	/* Method to print a series of Harmonic number and its Sum */
-	/* @param int n represent the range of Harmonic series */
+	/* Method to print a series of Harmonic number and its Sum 
+	 * @param int n represent the range of Harmonic series 
+	 */
 	public static void harmonicNumber(int n) {
 		if(n<=0) {
 			System.out.println("Enter valid number");
@@ -135,8 +136,9 @@ public class Utility {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	/* Method for Prime Factorization of N user Input */
-	/* @param int n checks prime Factors for the user Input number n */
+	/* Method for Prime Factorization of N user Input 
+	 * @param int n checks prime Factors for the user Input number n 
+	 */
 	public static void primeFactorization(int n) {
 		int i = 2;
 		while (n > 1) {
@@ -149,8 +151,11 @@ public class Utility {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	/* Method for the gambling Game */
-	/* @param int s denotes stack, int g denotes g, int n denotes Gambling trials */
+	/* Method for the gambling Game
+	 * @param int s denotes stack 
+	 * @param int g denotes goal 
+	 * @param int n denotes Gambling trials 
+	 */
 	public static void gamblingGame(int s, int g, int n) {
 		int stack = s;
 		int goal = g;
@@ -181,8 +186,9 @@ public class Utility {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	/* Method To generate Coupon code */
-	/* @param takes int n as number of Distinct Coupons required */
+	/* Method To generate Coupon code 
+	 * @param takes int n as number of Distinct Coupons required 
+	 */
 	public static void generateCoupon(int n) {
 		int count = n;
 		while (count > 0) {
@@ -201,7 +207,8 @@ public class Utility {
 /* ------------------------------------------------------------------------- */
 	/*
 	 * Method To Generate 2D Array Of Integer, Double And Boolean 
-	 * @param int m takes Number of rows and int n takes number of Columns
+	 * @param int m takes Number of rows
+	 * @param int n takes number of Columns
 	 */  
 	public static void setArray(int m, int n) {
 		Object[][] arr = new Object[m][n];
@@ -222,7 +229,7 @@ public class Utility {
 /* ------------------------------------------------------------------------- */
 	/*
 	 * Method to check triplets and total numbers of triplets thats sums to Zero
-	 *@param int numberOfElements represents number of integers that user provides
+	 * @param int numberOfElements represents number of integers that user provides
 	 */ 
 	public static void distinctTriplet(int numberOfElements) {
 		int[] arr = new int[numberOfElements];
@@ -919,6 +926,20 @@ public class Utility {
 		}
 		return b;
 	}
+	/*
+	 * Method To Calculate Amount to be paid in Compound Interests
+	 * @param p takes Principal Amount
+	 * @param y takes Number of Years
+	 * @param r takes The Rate of Interest
+	 */
+	public static double monthlyPayment(double p, double y, double r) {
+		double n = 12*y;
+		double r1 = r /(12*100);
+		double payment = (p*r1)/ (1 - Math.pow((1+ r1),(-n)));
+		return payment;
+	}
+	
+	
 }
 	
 	
