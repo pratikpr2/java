@@ -66,7 +66,7 @@ public class Utility {
 		}
 
 	}
-
+	//public static <T extends Comprable<T>> T genArray
 	/*
 	 *  Method to format a String to letters only 
 	 */
@@ -478,6 +478,24 @@ public class Utility {
 	}
 /* ------------------------------------------------------------------------- */
 	/*
+	 * Method to Initiate Generic Binary Search
+	 */
+	public static <T extends Comparable <T>> int genBinarySearch(T[] arr,int l, int h, T x) {
+		if(h>=l) {
+			int mid = l + (h-l)/2;
+			if(arr[mid].compareTo(x)==0) {
+				return mid;
+			}
+			else if(x.compareTo(arr[mid])<1) {
+				return genBinarySearch(arr,l,mid-1,x);
+			}
+			else
+				return genBinarySearch(arr,mid+1,h,x); 
+		}
+		return -1;
+	}
+/* ------------------------------------------------------------------------- */
+	/*
 	 * Method to initiate Insertion Sort on an array
 	 * @param int[] arr takes the array to perform the sorting
 	 */
@@ -493,6 +511,23 @@ public class Utility {
 			arr[j+1]=key;
 		}
 	}
+	/*
+	 * Method to initiate Generic Insertion sort
+	 * @param arr takes the generic array
+	 */
+	public static <T extends Comparable<T>> void genInsertionSort(T[] arr) {
+		int n = arr.length;
+		for(int i=1;i<n;++i) {
+			T key = arr[i];
+			int j = i-1;
+			while(j>=0 && arr[j].compareTo(key)>0) {
+				arr[j+1]=arr[j];
+				j=j-1;
+			}
+			arr[j+1]=key;
+		}
+	}
+	
 /* ------------------------------------------------------------------------- */	
 	/*
 	 * Method to initiate Bubble Sort on an array
@@ -507,6 +542,22 @@ public class Utility {
 					arr[j+1]=temp;
 				}
 			}
+		}
+	}
+	/*
+	 * Generic Bubble Sort method to Sort an Array
+	 * @param takes array input
+	 */
+	public static <T extends Comparable <T>> void genBubbleSort(T[] arr) {
+		for(int i =0; i<arr.length-1;i++) {
+			for(int j = 0; j<arr.length-i-1;j++) {
+				if(arr[j].compareTo(arr[j+1])>0) {
+					T temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+				
 		}
 	}
 /* ------------------------------------------------------------------------- */			
@@ -660,6 +711,8 @@ public class Utility {
 		}
 		
 	}
+	
+	
 	/*
 	 * Method to implement Merge Sort
 	 * @param arr takes the arrays and sub array
@@ -760,7 +813,7 @@ public class Utility {
 	}
 	
 	/*
-	 * Method to convert Temperatures
+	 * Method to Convert Temperatures
 	 */
 	public static long temperatureConversion() {
 		System.out.println("Enter 1 to convert from Celsius to Fahrenheit");
@@ -778,9 +831,10 @@ public class Utility {
 		default:
 			return -1;
 		}
-		
 	}
-		
+	
+	
+	
 }	
 		
 		
