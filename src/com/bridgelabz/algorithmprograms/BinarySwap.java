@@ -1,6 +1,6 @@
 /******************************************************************************
  *  
- *  Purpose: To search an element in an array using Generic Binary Search. 
+ *  Purpose: To Swap two Binary nibble & Check if the Number is Power of 2 .
  *
  *  @author  Pratik Prakash
  *  @version 1.0
@@ -11,13 +11,10 @@ package com.bridgelabz.algorithmprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class GenericBinarySearch {
-	
+public class BinarySwap {
+
 	public static void main(String[] args) {
-		Integer[] arr = {2,1,3,5};
-		System.out.println("Enter Element to search :");
-		Integer x = Utility.userIntegerInput();
-		int index=Utility.genBinarySearch(arr, 0, arr.length-1, x);
-		System.out.println(index);
+		System.out.println(Utility.toBinary(100));
+		Utility.binarySwap(100);
 	}
 }

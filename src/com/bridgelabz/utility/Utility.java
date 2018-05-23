@@ -40,6 +40,11 @@ public class Utility {
 		return longInt;
 	}
 	
+	public static double userDoubleInput() {
+		double doubleInt= scanner.nextLong();
+		return doubleInt;
+	}
+	
 	public static char userCharInput() {
 		char[] c = scanner.next().toCharArray();
 		if(c.length>1) {
@@ -832,10 +837,91 @@ public class Utility {
 			return -1;
 		}
 	}
+	/*
+	 * Method to find the square Roots of a number
+	 * @param double n takes the user number to find roots
+	 */
+	public static double sqrt(double n) {
+		double t;
+		t = n;
+		double epsilon = 1e-15;
+		while(Math.abs(t- n/t) > epsilon*t) 
+			t = ((n/t)+t)/2;
+		return t;
+	}
+	/*
+	 * Method to Covert a decimal to Binary String
+	 * @param int n takes the decimal number
+	 */
+	public static StringBuilder toBinary(int n) {
+		StringBuilder str = new StringBuilder();
+		while(n>0) {
+			if(n%2==0) {
+				str.append("0");
+				
+			}
+			else
+				str.append("1");
+			n=n/2;
+		}
+		return str.reverse();
+	}
+	/*
+	 * Method to Swap Two Binary Nibbles From Decimal Conversion
+	 * @param int n takes Decimal Input 
+	 */
+	public static void binarySwap(int n) {
+		StringBuilder str = toBinary(n);
+		if(str.length() < 8) {
+			str.reverse().append("0");
+			str.reverse();
+		}
+		String str1 = str.substring(0,str.length()/2);// spliting binary digits
+		String str2 = str.substring(str.length()/2,str.length());//spliting binary digits
+	    String str3 = str2+str1;
+		System.out.println("Reversed Binary: "+str3);
+		StringBuilder strbuild = new StringBuilder();
+		strbuild.append(str3);
+		strbuild.reverse();
+		String str4 = strbuild.substring(0);
+		char[] c = str4.toCharArray();
+		int sum=0;
+		for(int i=0; i< c.length; i++) {
+			if(c[i]=='1') {
+				sum = (int) (sum + Math.pow(2, i)); 
+			}
+		}
+		System.out.println("Its Decimal Value: "+sum);
+		if(checkFactorTwo(sum)) {
+			System.out.println("It is Power of Two");
+		}
+		else {
+			System.out.println("Not a Power of Two");
+		}
+	}
+	/*
+	 * Method to check if a Number is a Power of two
+	 * @param int n takes the Input number
+	 */
+	public static boolean checkFactorTwo(int n) {
+		boolean b=true ;
+		while (n > 1 ) 
+		{
+			if (n % 2 == 0) 
+			{
+				n = n / 2;
+			} 
+			else 
+			{
+				b = false;
+				break;
+			}
+		}
+		return b;
+	}
+}
 	
 	
-	
-}	
 		
 		
 		

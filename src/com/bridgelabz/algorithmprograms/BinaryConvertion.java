@@ -1,6 +1,6 @@
 /******************************************************************************
  *  
- *  Purpose: To search an element in an array using Generic Binary Search. 
+ *  Purpose: To Convert a Decimal digit to Binary.
  *
  *  @author  Pratik Prakash
  *  @version 1.0
@@ -11,13 +11,12 @@ package com.bridgelabz.algorithmprograms;
 
 import com.bridgelabz.utility.Utility;
 
-public class GenericBinarySearch {
+public class BinaryConvertion {
 	
 	public static void main(String[] args) {
-		Integer[] arr = {2,1,3,5};
-		System.out.println("Enter Element to search :");
-		Integer x = Utility.userIntegerInput();
-		int index=Utility.genBinarySearch(arr, 0, arr.length-1, x);
-		System.out.println(index);
+		System.out.println("Enter a number in Decimal");
+		int n = Utility.userIntegerInput();
+		System.out.println(Utility.toBinary(n));
 	}
+
 }
