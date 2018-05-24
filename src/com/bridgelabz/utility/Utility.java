@@ -13,7 +13,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.security.SecureRandom;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.lang.System;
@@ -658,10 +661,10 @@ public class Utility {
 	/*
 	 * Method to read an input file in the form of String Array
 	 */
-	public static String[] fileContents() {
+	public static String[] fileContents(String s) {
 		String[] store = new String[10];
 		try {
-			Scanner input = new Scanner(new File("file.txt"));
+			Scanner input = new Scanner(new File(s));
 			while(input.hasNextLine()) {
 				String msg = input.nextLine();
 				msg=msg.toLowerCase();
@@ -675,6 +678,38 @@ public class Utility {
 		}
 		return store;
 	}
+	/*
+	 * Method to write a word to a particluar text file
+	 * @param string filename takes the file location e.g(/home/directory/file.txt)
+	 * @param string list adds the list of string to the file
+	 */
+	public static void fileWriter(String filename,String list) {
+		String str1 = list.toString();
+		BufferedWriter br = null;
+		FileWriter fl = null;
+		try {
+			fl = new FileWriter(filename);
+			br = new BufferedWriter(fl);
+			fl.write(str1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error in Writing");;
+		}
+		finally {
+			try {
+				if(fl!=null) {
+					fl.close();
+				}
+				if(br!=null) {
+					br.close();
+				}
+			}catch(IOException e) {
+				System.out.println("Error");
+			}
+		}
+		
+		
+	}
 /* ------------------------------------------------------------------------- */	
 	/*
 	 * Method to merge Sort an Array
@@ -685,7 +720,7 @@ public class Utility {
 	 */
 	public static void mergeFunc(int[] arr,int l,int m, int r) {
 		int n1 = m-l+1;
-		int n2 = r-m;
+		int n2 = r-m; 
 		
 		int[] left = new int[n1];
 		int[] right = new int[n2];
@@ -938,6 +973,8 @@ public class Utility {
 		double payment = (p*r1)/ (1 - Math.pow((1+ r1),(-n)));
 		return payment;
 	}
+	
+	
 	
 	
 }

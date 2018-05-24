@@ -16,10 +16,9 @@ public class WordSearch {
 	
 	public static void main(String[] args) {
 		
-		String[] arr = Utility.fileContents();
+		String[] arr = Utility.fileContents("file.txt");
 		System.out.println("Enter the String to search");
 		String search = Utility.userStringInput();
-		//int count=0;
 		for(String el:arr) {
 			System.out.println(el);
 		}
