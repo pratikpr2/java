@@ -2,20 +2,20 @@
  *  
  *  Purpose: Search a word from a file, if not Found add the word to file
  *
- *  @author  Pratik Prakash
+ *  @author  ulu lol
  *  @version 1.0
  *  @since   24-05-2018
  *
  ******************************************************************************/
 package com.bridgelabz.dataStructurePrograms;
 
-import com.bridgelabz.dataStructures.MyLinkedList;
+import com.bridgelabz.dataStructures.UnorderedLinkedList;
 import com.bridgelabz.utility.Utility;
 
 public class UnorderedList {
 	
 	public static void main(String[] args) {
-		MyLinkedList myLinkedList = new MyLinkedList();
+		UnorderedLinkedList myLinkedList = new UnorderedLinkedList();
 		String[] str = Utility.fileContents("myFile.txt");
 		for(int i = 0; i<str.length; i++) {
 			myLinkedList.add(str[i]);
@@ -28,6 +28,8 @@ public class UnorderedList {
 		
 		if(myLinkedList.search(word)) {
 			System.out.println("Word Found ");
+			myLinkedList.remove(word);
+			Utility.fileWriter("myFile.txt", (String)myLinkedList.display());
 		}
 		else {
 			System.out.println("word not Found ...adding to list");
@@ -36,6 +38,6 @@ public class UnorderedList {
 			Utility.fileWriter("myFile.txt",(String)myLinkedList.display());
 		}
 		
-		
+		System.out.println(myLinkedList.display());
 	}
 }

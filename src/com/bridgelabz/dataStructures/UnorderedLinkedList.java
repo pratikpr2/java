@@ -1,29 +1,30 @@
 /******************************************************************************
  *  
- *  Purpose: To Implement a Linked List 
+ *  Purpose: To Implement an Unordered Linked List 
  *
  *  @author  Pratik Prakash
  *  @version 1.0
- *  @since   19-05-2018
+ *  @since   25-05-2018
  *
  ******************************************************************************/
 package com.bridgelabz.dataStructures;
 
-class Node<T>{
+class Node<T extends Comparable<T>>{
 	protected T data;
 	protected Node next;
-	Node(T d){
-		data = d;
+	Node(T newData){
+		data = newData;
 		next = null;
 	}
 }
-public class MyLinkedList<T> {
+
+public class UnorderedLinkedList<T extends Comparable<T>> {
 	
-	private Node<T> head = null; //
+	private Node head = null; 
 	private int size = 0;
 	
-	public void add(T newData) {
-		Node newNode = new Node(newData);
+	public void add(T item) {
+		Node newNode = new Node(item);
 		
 		if(head == null) {
 			head = newNode;
@@ -40,28 +41,31 @@ public class MyLinkedList<T> {
 		return;
 		
 	}
-	public void push(T newData ) {
-		Node newNode = new Node(newData);
-		newNode.next = head;
-		head = newNode;
-		size++;
-		return;
-	}
+	
 	public void remove(T item) {
-		Node temp = head, prev=null;
-		
-		if(temp!= null && temp.data == item) {
-			head = temp.next;
+		if(head.data.compareTo(item)==0) {
+			head = head.next;
 			size--;
 			return;
 		}
-		while(temp!=null && temp.data != item) {
-			prev =temp;
+		Node temp = head;
+		Node current;
+		while(temp.next!=null) {
+			current=temp;
+			temp=temp.next;
+			if(temp.data.compareTo(item)==0) {
+				current.next=current.next.next;
+				size--;
+			}
+		}
+	}
+	public void append(T item) {
+		Node newNode = new Node(item);
+		Node temp = head;
+		while(temp.next!=null) {
 			temp = temp.next;
 		}
-		if(temp == null) return;
-		prev.next = temp.next;
-		size--;
+		temp.next=newNode;
 	}
 	public boolean search(T x) {
 		Node current = head;
@@ -72,6 +76,12 @@ public class MyLinkedList<T> {
 			current = current.next;
 		}
 		return false;
+	}
+	public T peek() {
+		if(head!=null) {
+			return (T) head.data;
+		}
+		return null;
 	}
 	public boolean isEmpty() {
 		if(size==0)
@@ -101,13 +111,34 @@ public class MyLinkedList<T> {
 		size--;
 		return (T) prev.data;
 	}
+	public void pop() {
+		Node temp = head;
+		Node prev = null;
+		if(head==null) {
+			System.out.println("No Elements");
+			return;
+		}
+		while(temp.next!=null) {
+			prev= temp;
+			temp = temp.next;
+		}
+		if(head.next!=null) {
+		prev.next=null;
+		size--;
+		}
+		else {
+			head=null;
+			size--;
+		}
+		return;
+	}
 	public T pop(int index) {
 		if(head==null) return null;
 		Node temp = head;
 		if(index==0) {
 			head = temp.next;
 			size--;
-			return head.data;
+			return (T) head.data;
 		}
 		for(int i=0;temp!=null && i< index;i++) {
 			temp = temp.next;
@@ -129,6 +160,11 @@ public class MyLinkedList<T> {
 		}
 		return (T) s;
 	}
-	
-
+	public void genDisplay() {
+		Node node = head;
+		while(node != null) {
+			System.out.println(node.data+" ");
+			node = node.next;
+		}
+	}
 }

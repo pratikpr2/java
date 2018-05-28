@@ -12,7 +12,6 @@ package com.bridgelabz.utility;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.security.SecureRandom;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -80,7 +79,9 @@ public class Utility {
 	 */
 
 	public static String formatString(String s) {
-		return s.replaceAll("[-+.^:,@#0-9]", "");
+		String str = "Hello <<username>> How are you ?";
+		str=str.replace("<<username>>", s);
+		return str;
 	}
 
 /* ------------------------------------------------------------------------- */
@@ -112,7 +113,7 @@ public class Utility {
 	/* Method to check an year is leap or not */
 	/* @param int year takes user input to check for leap year */
 	public static void leapYear(int year) {
-		if (year % 4 == 0 || (year % 400 == 0 && year % 100 == 0)) {
+		if (year % 4 == 0 && (year % 400 == 0 && year % 100 == 0)) {
 			System.out.println("Leap year");
 		} else
 			System.out.println("Not a leap year");
@@ -128,9 +129,9 @@ public class Utility {
 			harmonicNumber(userIntegerInput());
 		}
 		float temp = 0;
-		for (float i = 1; i <= n; i++) {
+		for (int i = 1; i <= n; i++) {
 			System.out.print("1/" + i + " + ");
-			temp += 1 / i;
+			temp += 1.0 / i;
 		}
 		if(temp!=0) {
 		System.out.print("= " + temp);
@@ -159,54 +160,84 @@ public class Utility {
 	 * @param int g denotes goal 
 	 * @param int n denotes Gambling trials 
 	 */
-	public static void gamblingGame(int s, int g, int n) {
-		int stack = s;
-		int goal = g;
-		int win = 0;
-		int loose = 0;
-		int count = n;
-		while (count > 0 && stack != goal || stack > 0) {
-			double ran = Math.random() * 10;
-			if (ran > 5) {
+	public static void gamblingGame(int stack, int goal, int bets) {
+		int win=0;
+		int loss=0;
+		for(int i=0;i<bets;i++) {
+			int cash = stack;
+			while(cash>0 && cash< goal) {
+				if(Math.random()>0.5) {
+					cash++;
+				}
+				else {
+					cash--;
+				}
+			}
+			if(cash==goal) {
 				win++;
-				stack = stack + 1;
-				System.out.println("you Win");
+				System.out.println("won");
+			}else {
+				loss++;
+				System.out.println("Lost");
 			}
-
-			else {
-				loose++;
-				stack = stack - 1;
-				System.out.println("you loose");
-			}
-			System.out.println(count--);
 		}
-		System.out.println("Number of times win = " + win);
-		System.out.println("Number of times loose = " + loose);
-		double per_win = (win * 100) / (win + loose);
-		double per_loose = 100 - per_win;
-		System.out.println("Percentage Of Win = " + per_win);
-		System.out.println("Percentage Of Loose = " + per_loose);
+		System.out.println("winPer = "+(win*100/bets));
+		System.out.println("lostPer = "+(loss*100/bets));
 	}
 
 	/* ------------------------------------------------------------------------- */
 	/* Method To generate Coupon code 
 	 * @param takes int n as number of Distinct Coupons required 
 	 */
-	public static void generateCoupon(int n) {
-		int count = n;
-		while (count > 0) {
-			StringBuilder sb = new StringBuilder();
-			char[] arr = "1234567890".toCharArray();
-			Random random = new SecureRandom();
-			for (int i = 0; i < 6; i++) {
-				char c = arr[random.nextInt(arr.length)];
-				sb.append(c);
-			}
-			String out = sb.toString();
-			System.out.println(out);
-			count--;
+	public static int generateCoupon(int n) {
+		Random random = new Random();
+		return random.nextInt(n);
 		}
+	public static boolean checkDistinct(int[] arr,int n,int c) {
+		int coupon =c;
+		for(int i=0;i<n;i++) {
+			if(arr[i]==coupon) {
+				return false;
+			}
+		}
+		return true;
 	}
+	/**
+	 * 
+	 * @param num
+	 */
+	public static void getCoupon(int num) {
+		int[] arr = new int[num];
+		int l = arr.length;
+		int count= 0;
+		int countRan=0;
+		int coupon = 0;
+		while(count<l) {
+			coupon=generateCoupon(l);
+			countRan++;
+			if(count==0) {
+				arr[0]=coupon;
+				count++;
+			}
+			 else
+			 {
+				if(checkDistinct(arr,count,coupon)) {
+					
+					arr[count]=coupon;
+					count++;
+					
+				}
+			}
+			
+		}	
+
+		for(int i=0;i<arr.length;i++) {
+			System.out.println(arr[i]);
+		}
+		System.out.println("Random Function called: "+countRan+" times");
+	}
+
+	
 /* ------------------------------------------------------------------------- */
 	/*
 	 * Method To Generate 2D Array Of Integer, Double And Boolean 
@@ -317,10 +348,9 @@ public class Utility {
 	/*
 	 * Method Calculates the Time Lapse for the interval
 	 */
-	public static void timeLapse() {
-		double start = startTimer();
-		double end = endTimer();
-		System.out.println("Time Lapse: " + (end-start)+" nanoseconds");
+	public static long timeLapse(long a, long b) {
+		System.out.println("Timer stopped");
+		return b-a;
 	}
 	
 	/*
@@ -329,10 +359,15 @@ public class Utility {
 	 */
 	public static void getRoots(int a, int b, int c) {
 		double delta = Math.pow(b, 2) - (4*a*c);
+		if(delta>0) {
 		double root1 = (-b + Math.pow(delta, 0.5))/ (2*a);
 		double root2 = (-b - Math.pow(delta, 0.5))/ (2*a);
 		System.out.println("The Roots of the Equation are:" + root1 + " , "+ root2);
+		}
+		else
+			System.out.println("Roots are Imaginary");
 	}
+		
 /* ------------------------------------------------------------------------- */		
 	/*
 	 * Method to calculate the Wind Chill
@@ -347,7 +382,7 @@ public class Utility {
 		     v = Double.parseDouble(args[1]); // Wind Speed in miles per hour
 		}
 		catch(Exception e) {
-			System.out.println("Invalid Input");
+			System.out.println("Pass Command Line Arguments");
 		}
 		 if(t > 50 || v > 120 || v < 3 ) {
 			System.out.println("Range t = [t<50], Range v = [3<v<120]");
@@ -668,7 +703,7 @@ public class Utility {
 			while(input.hasNextLine()) {
 				String msg = input.nextLine();
 				msg=msg.toLowerCase();
-				msg = msg.replace(",","");
+				msg = msg.replace(","," ");
 				msg = msg.replace("?", " ");
 				msg= msg.replace(".", " ");
 				store =msg.split(" ");

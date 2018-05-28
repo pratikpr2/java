@@ -16,7 +16,7 @@ import com.bridgelabz.utility.Utility;
 public class StringTemplate {
 		public static void main(String[] args) {
 			System.out.println("Enter username:");
-			String n = Utility.userStringInput();
-			System.out.println("Hello "+ Utility.formatString(n)+", How are you?");
+			String string = Utility.userStringInput();
+			System.out.println(Utility.formatString(string));
 		}
 }

@@ -16,6 +16,6 @@ public class CouponCode {
 	public static void main(String[] args) {
 		System.out.println("Enter The number of Coupon");
 		int n = Utility.userIntegerInput();
-		Utility.generateCoupon(n);
+		Utility.getCoupon(n);
 	}
 }

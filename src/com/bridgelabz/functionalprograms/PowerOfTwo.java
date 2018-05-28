@@ -10,14 +10,16 @@
 
 package com.bridgelabz.functionalprograms;
 import java.lang.Math;
+import com.bridgelabz.utility.Utility;
 public class PowerOfTwo {
 	public static void main(String[] args) {
-		int n = Integer.parseInt(args[0]);
+		int n = Utility.userIntegerInput();
 		if( n>0 && n<31) {
-			for(int i =1 ; i<=Integer.parseInt(args[0]); i++) {
+			for(int i =1 ; i<=n; i++) {
 				System.out.println("2^"+i+" = "+ Math.pow(2, i));
 			}
 		}
 		else System.out.println("Integer Overflow");
+		System.out.println(n);
 	}
 }
