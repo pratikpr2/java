@@ -11,7 +11,7 @@ package com.bridgelabz.dataStructures;
 
 class DNode<T extends Comparable <T>>{
 	protected T data;
-	protected DNode next;
+	protected DNode<T> next;
 	DNode(T d){
 		data=d;
 		next=null;
@@ -20,8 +20,8 @@ class DNode<T extends Comparable <T>>{
 
 public class Deque<T extends Comparable<T>> {
 	
-	DNode front;
-	DNode rear;
+	DNode<T> front;
+	DNode<T> rear;
 	
 	int size=0;
 	
@@ -31,7 +31,7 @@ public class Deque<T extends Comparable<T>> {
 	}
 	
 	public void addFront(T item) {
-		DNode newNode = new DNode(item);
+		DNode<T> newNode = new DNode<T>(item);
 		if(size==0) {
 			front=newNode;
 			rear = newNode;
@@ -47,7 +47,7 @@ public class Deque<T extends Comparable<T>> {
 		if(size==0) {
 			addFront(item);
 		}
-		DNode node = new DNode(item);
+		DNode<T> node = new DNode<T>(item);
 		rear.next= node;
 		rear= node;
 		size++;
@@ -58,7 +58,7 @@ public class Deque<T extends Comparable<T>> {
 			System.out.println("No elements");
 			return null;
 		}
-		DNode temp = front;
+		DNode<T> temp = front;
 		front = front.next;
 		size--;
 		if(temp.next==null) {
@@ -74,7 +74,7 @@ public class Deque<T extends Comparable<T>> {
 			System.out.println("No Elements");
 			return null;
 		}
-		DNode temp = front;
+		DNode<T> temp = front;
 		if(size==1) {
 			front = rear = null;
 			return (T)temp.data;
@@ -96,7 +96,7 @@ public class Deque<T extends Comparable<T>> {
 	}
 	public T display() {
 		String s= "";
-		DNode node = front;
+		DNode<T> node = front;
 		while(node!=null) {
 			s=s+node.data;
 			node=node.next;

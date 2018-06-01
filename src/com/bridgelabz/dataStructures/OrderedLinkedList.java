@@ -10,18 +10,23 @@
 package com.bridgelabz.dataStructures;
 
 public class OrderedLinkedList<T extends Comparable<T>> {
-	private Nodes<T> head = null;
-	private int size=0;
+	private Nodes<T> head;
+	private int size;
+	
+	public OrderedLinkedList() {
+		head=null;
+		size=0;
+	}
 	
 	public void add(T item) {
-		Nodes newNode = new Nodes(item);
+		Nodes<T> newNode = new Nodes<T>(item);
 		if(head==null || head.data.compareTo((T) newNode.data)>0) {
 			newNode.next = head;
 			head = newNode;
 			size++;
 			return;
 		}
-		Nodes current = head;
+		Nodes<T> current = head;
 		while(current.next!=null && ((Comparable<T>) current.next.data).compareTo((T)newNode.data)<0) {
 			current = current.next;
 		}
@@ -36,8 +41,8 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 			size--;
 			return;
 		}
-		Nodes temp = head;
-		Nodes current;
+		Nodes<T> temp = head;
+		Nodes<T> current;
 		while(temp.next!=null) {
 			current=temp;
 			temp=temp.next;
@@ -48,7 +53,7 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 		}
 	}
 	public boolean search(T item) {
-		Nodes current = head;
+		Nodes<T> current = head;
 		while(current!=null) {
 			if(current.data.equals(item))
 				return true;
@@ -67,7 +72,7 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 	}
 	public void index(T item) {
 		int count=0;
-		Nodes temp = head;
+		Nodes<T>temp = head;
 		while(temp.next!=null && temp.data!=item) {
 			temp=temp.next;
 			count++;
@@ -75,19 +80,22 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 		System.out.println("index is:"+count);
 	}
 	public T pop() {
-		Nodes temp = head;
-		Nodes prev = null;
+		Nodes<T> temp = head;
+		Nodes<T> prev = null;
+		if(head==null) return null;
+		if(temp.next==null) return temp.data;
 		while(temp.next!=null) {
 			prev= temp;
 			temp = temp.next;
 		}
 		prev.next=null;
+		size--;
 		return (T)temp.data;
 	}
 	public T pop(int index) {
 		int count=0;
-		Nodes temp = head;
-		Nodes prev = null;
+		Nodes<T> temp = head;
+		Nodes<T> prev = null;
 		while(temp.next!=null && count!=index ) {
 			prev = temp;
 			temp=temp.next;
@@ -98,11 +106,20 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 	}
 	public T display() {
 		String s ="";
-		Nodes node = head;
+		Nodes<T> node = head;
 		while(node != null) {
-			s=s + (String) node.data+" ";
+			s=s + (String)node.data+" ";
 			node = node.next;
 		}
 		return (T) s;
+	}
+	public String genDisplay() {
+		String s="";
+		Nodes<T> node = head;
+		while(node != null) {
+			s=s+node.data+" ";
+			node = node.next;
+		}
+		return s;
 	}
 }

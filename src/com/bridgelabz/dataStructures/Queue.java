@@ -11,7 +11,7 @@ package com.bridgelabz.dataStructures;
 
 	class QNode<T extends Comparable <T>>{
 		protected T data;
-		QNode next;
+		QNode<T> next;
 		
 		QNode(T d){
 			data=d;
@@ -21,8 +21,8 @@ package com.bridgelabz.dataStructures;
 	
 	public class Queue<T extends Comparable<T>> {
 		
-		QNode front;
-		QNode rear;
+		QNode<T> front;
+		QNode<T> rear;
 		int size=0;
 		
 		public Queue() {
@@ -31,7 +31,7 @@ package com.bridgelabz.dataStructures;
 		}
 		
 	public void enque(T item) {
-		QNode temp = new QNode(item);
+		QNode<T> temp = new QNode<T>(item);
 		if(rear == null) {
 			front = temp;
 			rear = temp;
@@ -44,7 +44,7 @@ package com.bridgelabz.dataStructures;
 		if(front==null) {
 			return null;
 		}
-		QNode temp = front;
+		QNode<T> temp = front;
 		front= front.next;
 		size--;
 		if(temp==null) {
@@ -57,11 +57,18 @@ package com.bridgelabz.dataStructures;
 		return size;
 	}
 	public void display() {
-		QNode node = front;
+		QNode<T> node = front;
 		while(node!=null) {
 			System.out.println(node.data+ " ");
 			node = node.next;
 		}
 	}
-	
+	public void data() {
+		QNode<T> node = front;
+		while(node!=null) {
+			System.out.print(node.data);
+			node=node.next;
+		}
+	}
 }
+	

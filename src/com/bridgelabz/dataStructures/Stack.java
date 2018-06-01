@@ -9,11 +9,11 @@
  ******************************************************************************/
 package com.bridgelabz.dataStructures;
 
-public class Stack {
+public class Stack<T> {
 
 	UnorderedLinkedList list = new UnorderedLinkedList();
 	
-	public void push(Object item) {
+	public void push(T item) {
 		list.add((Comparable) item);
 	}
 	

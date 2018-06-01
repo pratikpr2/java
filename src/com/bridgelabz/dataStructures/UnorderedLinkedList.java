@@ -9,22 +9,22 @@
  ******************************************************************************/
 package com.bridgelabz.dataStructures;
 
-class Node<T extends Comparable<T>>{
+class Node<T>{
 	protected T data;
-	protected Node next;
+	protected Node<T> next;
 	Node(T newData){
 		data = newData;
 		next = null;
 	}
 }
 
-public class UnorderedLinkedList<T extends Comparable<T>> {
+public class UnorderedLinkedList<T> {
 	
-	private Node head = null; 
+	private Node<T> head = null; 
 	private int size = 0;
 	
 	public void add(T item) {
-		Node newNode = new Node(item);
+		Node<T> newNode = new Node<T>(item);
 		
 		if(head == null) {
 			head = newNode;
@@ -33,7 +33,7 @@ public class UnorderedLinkedList<T extends Comparable<T>> {
 		}
 		newNode.next = null;
 		
-		Node last = head;
+		Node<T> last = head;
 		while(last.next !=null)
 			last = last.next;
 		last.next = newNode;
@@ -43,32 +43,32 @@ public class UnorderedLinkedList<T extends Comparable<T>> {
 	}
 	
 	public void remove(T item) {
-		if(head.data.compareTo(item)==0) {
+		if(head.data.equals(item)) {
 			head = head.next;
 			size--;
 			return;
 		}
-		Node temp = head;
-		Node current;
+		Node<T> temp = head;
+		Node<T> current;
 		while(temp.next!=null) {
 			current=temp;
 			temp=temp.next;
-			if(temp.data.compareTo(item)==0) {
+			if(temp.data.equals(item)) {
 				current.next=current.next.next;
 				size--;
 			}
 		}
 	}
 	public void append(T item) {
-		Node newNode = new Node(item);
-		Node temp = head;
+		Node<T> newNode = new Node<T>(item);
+		Node<T> temp = head;
 		while(temp.next!=null) {
 			temp = temp.next;
 		}
 		temp.next=newNode;
 	}
 	public boolean search(T x) {
-		Node current = head;
+		Node<T> current = head;
 		while(current != null) {
 			if(current.data.equals(x)) {
 				return true;
@@ -92,7 +92,7 @@ public class UnorderedLinkedList<T extends Comparable<T>> {
 		return size;
 	}
 	public int index(T item) {
-		Node node = head;
+		Node<T> node = head;
 		for(int i=0;i<size;i++) {
 			node = node.next;
 			if(node.data==item) {
@@ -102,8 +102,8 @@ public class UnorderedLinkedList<T extends Comparable<T>> {
 		return -1;
 	}
 	public T pop(T item) {
-		Node temp=head,prev = null;
-		while(temp.next != null) {
+		Node<T> temp=head,prev = null;
+		while(temp.next != null && temp.data==item) {
 			prev = temp;
 			temp =temp.next;
 		}
@@ -111,60 +111,67 @@ public class UnorderedLinkedList<T extends Comparable<T>> {
 		size--;
 		return (T) prev.data;
 	}
-	public void pop() {
-		Node temp = head;
-		Node prev = null;
-		if(head==null) {
-			System.out.println("No Elements");
-			return;
-		}
+	public T pop() {
+		Node<T> temp = head;
+		Node<T> prev = null;
+		if(head==null) return null;
+		if(temp.next==null) return temp.data;
 		while(temp.next!=null) {
 			prev= temp;
 			temp = temp.next;
 		}
-		if(head.next!=null) {
 		prev.next=null;
 		size--;
-		}
-		else {
-			head=null;
-			size--;
-		}
-		return;
+		return (T)temp.data;
 	}
+	
 	public T pop(int index) {
 		if(head==null) return null;
-		Node temp = head;
-		if(index==0) {
-			head = temp.next;
-			size--;
-			return (T) head.data;
+		Node<T> temp = head;
+		int pos=0;
+		Node<T> prev =null;
+		while(temp.next!=null && pos!=index) {
+			prev= temp;
+			temp=temp.next;
+			pos++;
 		}
-		for(int i=0;temp!=null && i< index;i++) {
-			temp = temp.next;
-		}
-		if(temp ==null || temp.next==null)
-			return null;
-		Node next = temp.next.next;
-		Node ele = temp.next;
-		temp.next = next;
-		return (T) ele;
+		prev.next=temp.next;
+		return temp.data;
 	}	
 		
-	public T display() {
+	public T getData(int index) {
+		if(head==null) return null;
+		Node<T> temp = head;
+		int pos=0;
+		while(temp.next!=null && pos != index) {
+			temp=temp.next;
+			pos++;
+		}
+		//if(index>pos) System.out.println("List out of Bound");
+		return temp.data;
+	}
+	public String display() {
 		String s ="";
-		Node node = head;
+		Node<T> node = head;
 		while(node != null) {
-			s=s + (String) node.data+" ";
+			s=s +  node.data.toString() + " ";
 			node = node.next;
 		}
-		return (T) s;
+		return s;
 	}
 	public void genDisplay() {
-		Node node = head;
-		while(node != null) {
-			System.out.println(node.data+" ");
+		Node<T> node = head;
+		//if(node==null) System.out.println("No Elements");
+		while(node!= null) {
+			System.out.print(node.data+" ");
 			node = node.next;
 		}
+	}
+	
+	
+	public static void main(String[] args) {
+		String s1=new String("Hello");
+		String s2=new String("Hello");
+		System.out.println(s1.equals(s2));
 	}
 }

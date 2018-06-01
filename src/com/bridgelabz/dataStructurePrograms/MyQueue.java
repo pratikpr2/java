@@ -34,7 +34,7 @@ public class MyQueue {
 			case 1:
 				System.out.println("Enter Amount to Withdraw");
 				int amount = Utility.userIntegerInput();
-				while(amount>10000) {
+				while(amount>amountLimit) {
 					System.out.println("Amount limit Exceeded, limit: 10000");
 					amount=Utility.userIntegerInput();
 				}

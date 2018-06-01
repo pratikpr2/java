@@ -1,0 +1,7 @@
+{
+"StockName":[
+			{"stockName":"harley","numberOfShare":"6700","sharePrice":"8000"},
+			{"stockName":"ferrari","numberOfShare":"8900","sharePrice":"8700"},
+			{"stockName":"BmW","numberOfShare":"9800","sharePrice":"9800"}]
+
+}

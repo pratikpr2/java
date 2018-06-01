@@ -11,7 +11,7 @@ package com.bridgelabz.dataStructures;
 
 public class Nodes<T extends Comparable<T>> {
 	protected T data;
-	protected Nodes next;
+	protected Nodes<T> next;
 	Nodes(T d){
 		data = d;
 		next=null;
