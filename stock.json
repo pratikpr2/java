@@ -1,7 +1,12 @@
-{
-"StockName":[
-			{"stockName":"harley","numberOfShare":"6700","sharePrice":"8000"},
-			{"stockName":"ferrari","numberOfShare":"8900","sharePrice":"8700"},
-			{"stockName":"BmW","numberOfShare":"9800","sharePrice":"9800"}]
-
-}
+[
+	{
+		"name": "reliance",
+		"numberOfShares": 6000,
+		"sharePrice": 100
+	},
+	{
+		"name": "airtel",
+		"numberOfShares": 4000,
+		"sharePrice": 150
+	}
+]

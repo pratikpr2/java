@@ -1000,11 +1000,11 @@ public class Utility {
 		case 1:
 			System.out.println("Enter Temperature in Celsius");
 			long d = userLongInput();
-			return ((d * (9 / 5)) + 32);
+			return ((d * 9 / 5) + 32);
 		case 0:
 			System.out.println("Enter Temperature in Fahrenheit");
 			long d1 = userLongInput();
-			return ((d1 - 32) * 5 / 9);
+			return ((d1 - 32) * (5 / 9));
 		default:
 			return -1;
 		}
@@ -1282,9 +1282,6 @@ public class Utility {
 	/**
 	 * Method to Check the Prime Numbers which are Anagrams
 	 */
-	/**
-	 * 
-	 */
 	public static void primeAnagram(){
 		UnorderedLinkedList<UnorderedLinkedList<Integer>> primes=primeArrayByLL(100);
 		UnorderedLinkedList<Integer> list = new UnorderedLinkedList<>();
@@ -1300,8 +1297,7 @@ public class Utility {
 		for(int p=0;p<list.size();p++) {
 			for(int q=p+1;q<list.size();q++) {
 				if(checkAnagram(list.getData(p).toString(),list.getData(q).toString())) {
-					/*anagramList.add(list.getData(p));
-					anagramList.add(list.getData(q));*/
+					
 					//System.out.println(list.getData(p));
 					anagramList.add(list.getData(p));
 					
@@ -1309,7 +1305,7 @@ public class Utility {
 					anagramList.add(list.getData(q));
 					list.remove(list.getData(p));
 					list.remove(list.getData(q));
-					//list.pop(q);
+					
 				}
 				else {
 					nonAnagramList.add(list.getData(p));
@@ -1322,7 +1318,7 @@ public class Utility {
 		System.out.println();
 		System.out.println("Non Anagram Prime List");
 		nonAnagramList.genDisplay();
-		System.out.println();
+		/*System.out.println();
 		int size= (int)Math.sqrt(anagramList.size())+5;
 		int size2 = (int)Math.sqrt(nonAnagramList.size())+5;
 		int[][] anagramArray = new int[size][size];
@@ -1351,8 +1347,9 @@ public class Utility {
 				System.out.print(nonAnagramArray[l][m]+" ");
 			}
 			System.out.println();
-		}
+		}*/
 	}
+	
 	/**
 	 * Method to replace a string regex with another String Data
 	 * @param msg takes the string to perform replacement

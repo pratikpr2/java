@@ -20,6 +20,9 @@ public class MyQueue {
 
 	    long amountLimit = 10000;
 	    long reserve = 1000000000;
+	    
+	    System.out.println("amount Limit "+amountLimit);
+	    System.out.println("reserve "+reserve);
 		
 	    Queue myqueue = new Queue();
 		for(int i =0; i<limit;i++) {
@@ -41,6 +44,7 @@ public class MyQueue {
 				if(reserve > amount) {
 					reserve = reserve - amount;
 					System.out.println("Transaction Completed !");
+					System.out.println("Reserve "+ reserve);
 					myqueue.dequeue();
 				}else
 					System.out.println("Insufficient Cash");
@@ -50,12 +54,13 @@ public class MyQueue {
 			case 2:
 				System.out.println("Enter Amount to Deposit");
 				int depamount = Utility.userIntegerInput();
-				while(depamount>1000) {
+				while(depamount>10000) {
 					System.out.println("Deposit Limit : 10000");
 					depamount= Utility.userIntegerInput();
 				}
 				reserve = reserve + depamount;
 				System.out.println("Transaction Completed");
+				System.out.println("Reserve: "+reserve);
 				myqueue.dequeue();
 				myqueue.display();
 				break;
@@ -64,5 +69,6 @@ public class MyQueue {
 			}
 		}
 		System.out.println("Queue Emptied");
+		System.out.println("Reserve Left" + reserve);
 	}
 }

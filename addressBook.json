@@ -1,0 +1,47 @@
+[
+	{
+		"firstName": "mukesh",
+		"lastName": "ambani",
+		"address": "marinedrive",
+		"city": "mumbai",
+		"state": "mumbai",
+		"zip": "876567",
+		"phoneNumber": "123543198"
+	},
+	{
+		"firstName": "pratik",
+		"lastName": "prakash",
+		"address": "vashi",
+		"city": "mumbai",
+		"state": "mumbai",
+		"zip": "234354",
+		"phoneNumber": "8709900648"
+	},
+	{
+		"firstName": "ranbir",
+		"lastName": "kapoor",
+		"address": "bandra",
+		"city": "mumbai",
+		"state": "mumbai",
+		"zip": "657687",
+		"phoneNumber": "8876545678"
+	},
+	{
+		"firstName": "simran",
+		"lastName": "bodra",
+		"address": "jamshedpur",
+		"city": "ranchi",
+		"state": "ranchi",
+		"zip": "654637",
+		"phoneNumber": "9898989898"
+	},
+	{
+		"firstName": "Tom",
+		"lastName": "cruise",
+		"address": "vashi",
+		"city": "mumbai",
+		"state": "maharastra",
+		"zip": "987689",
+		"phoneNumber": "9765345632"
+	}
+]

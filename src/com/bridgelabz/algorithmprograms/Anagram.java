@@ -17,6 +17,11 @@ public class Anagram {
 		String str1 = Utility.userStringInput(); //Takes first String Input
 		System.out.println("Enter Second String"); // Takes Second String Input
 		String str2 = Utility.userStringInput();
-		Utility.checkAnagram(str1,str2);
+		if(Utility.checkAnagram(str1,str2)) {
+			System.out.println("Anagram");
+			
+		}
+		else
+			System.out.println("Not Anagram");
 	}
 }

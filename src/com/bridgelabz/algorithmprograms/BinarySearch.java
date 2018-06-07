@@ -15,6 +15,7 @@ public class BinarySearch {
 	
 	public static void main(String[] args) {
 		int[] arr = Utility.intArray();
+		//Integer[] arr= {2,4,1,3,5};
 		arr = Utility.sortArray(arr);
 		System.out.println("Enter the element to search");
 		int x = Utility.userIntegerInput();

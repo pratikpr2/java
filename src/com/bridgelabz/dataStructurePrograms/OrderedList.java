@@ -27,7 +27,7 @@ public class OrderedList {
 		String word = Utility.userStringInput();
 		
 		if(ordLinkedList.search(word)) {
-			System.out.println("Number Found Removing Word");
+			System.out.println("Number Found Removing");
 			ordLinkedList.remove(word);
 			Utility.fileWriter("file1.txt", (String)ordLinkedList.display());
 		}

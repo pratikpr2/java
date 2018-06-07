@@ -17,7 +17,7 @@ public class MyStack {
 	public static void main(String[] args) {
 		Stack mystack = new Stack();
 		boolean b = true;
-		String str = "(5+8)*((7+8))";
+		String str = "(5+6)∗(7+8)/(4+3)5+6)∗(7+8)/(4+3)"  ;
 		int countleft=0;
 		int countright=0;
 		char[] arr = str.toCharArray();
@@ -33,7 +33,7 @@ public class MyStack {
 				
 			}
 		}
-		if(mystack.size()==0 && countleft==countright) {
+		if(countleft==countright) {
 			System.out.println("Balanced Paranthesis");
 		}
 		else

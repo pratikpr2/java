@@ -15,8 +15,8 @@ import com.bridgelabz.utility.Utility;
 public class UnorderedList {
 	
 	public static void main(String[] args) {
-		UnorderedLinkedList myLinkedList = new UnorderedLinkedList();
-		String[] str = Utility.fileContents("myFile.txt");
+		UnorderedLinkedList<String> myLinkedList = new UnorderedLinkedList<String>();
+		String[] str = Utility.fileContents("file.txt");
 		for(int i = 0; i<str.length; i++) {
 			myLinkedList.add(str[i]);
 		}
@@ -29,13 +29,13 @@ public class UnorderedList {
 		if(myLinkedList.search(word)) {
 			System.out.println("Word Found ");
 			myLinkedList.remove(word);
-			Utility.fileWriter("myFile.txt", (String)myLinkedList.display());
+			Utility.fileWriter("file.txt", (String)myLinkedList.display());
 		}
 		else {
 			System.out.println("word not Found ...adding to list");
 			myLinkedList.add(word);
 			System.out.println(myLinkedList.display());
-			Utility.fileWriter("myFile.txt",(String)myLinkedList.display());
+			Utility.fileWriter("file.txt",(String)myLinkedList.display());
 		}
 		
 		System.out.println(myLinkedList.display());

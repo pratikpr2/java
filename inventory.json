@@ -1,16 +1,26 @@
 {
-"rice":[
-	{"name": "basmati","weight": "40","price": "15"},
-	{"name": "something","weight": "45","price":"21"},
-	{"name": "somethingnext","weight":"43","price":"98"}],
-"pulses":[
-	{"name":"moong","weight":"55","price":"40"},
-	{"name":"rahar","weight":"45","price":"35"},
-	{"name":"pulseX","weight":"44","price":"44"}
+	"pulse": [
+		{
+			"name": "moong",
+			"weight": 50,
+			"price": 20
+		},
+		{
+			"name": "arhar",
+			"weight": 60,
+			"price": 23
+		}
 	],
-"wheat":[
-		{"name":"wheat1","weight":"75","price":"53"},
-		{"name":"wheat2","weight":"43","price":"44"},
-		{"name":"wheat3","weight":"66","price":"66"}]
-	
+	"rice": [
+		{
+			"name": "basmati",
+			"weight": 50,
+			"price": 20
+		},
+		{
+			"name": "indiagate",
+			"weight": 50,
+			"price": 20
+		}
+	]
 }

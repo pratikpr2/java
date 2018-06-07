@@ -14,7 +14,7 @@ import com.bridgelabz.utility.Utility;
 public class BinarySwap {
 
 	public static void main(String[] args) {
-		System.out.println(Utility.toBinary(100));
-		Utility.binarySwap(100);
+		System.out.println(Utility.toBinary(32));
+		Utility.binarySwap(32);
 	}
 }
