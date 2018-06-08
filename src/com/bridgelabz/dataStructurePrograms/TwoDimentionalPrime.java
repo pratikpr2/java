@@ -1,4 +1,4 @@
-package com.bridgelabz.dataStructurePrograms;
+/*package com.bridgelabz.dataStructurePrograms;
 
 import com.bridgelabz.dataStructures.UnorderedLinkedList;
 import com.bridgelabz.utility.Utility;
@@ -20,3 +20,4 @@ public class TwoDimentionalPrime {
 		
 	}
 }
+*/

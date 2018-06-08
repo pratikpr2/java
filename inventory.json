@@ -1,26 +1,21 @@
 {
 	"pulse": [
 		{
-			"name": "moong",
-			"weight": 50,
-			"price": 20
-		},
-		{
-			"name": "arhar",
-			"weight": 60,
-			"price": 23
+			"name": "pulse1",
+			"weight": 32,
+			"price": 12
 		}
 	],
 	"rice": [
 		{
 			"name": "basmati",
-			"weight": 50,
-			"price": 20
+			"weight": 45,
+			"price": 12
 		},
 		{
-			"name": "indiagate",
-			"weight": 50,
-			"price": 20
+			"name": "rice2",
+			"weight": 76,
+			"price": 12
 		}
 	]
 }

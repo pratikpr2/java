@@ -1265,7 +1265,7 @@ public class Utility {
 	 * @param range takes the range
 	 * @return return the 2D list of Prime numbers
 	 */
-	public static UnorderedLinkedList<UnorderedLinkedList<Integer>> primeArrayByLL(int range) {
+	public static UnorderedLinkedList<UnorderedLinkedList<Integer>> primeArrayByLL() {
 		UnorderedLinkedList<UnorderedLinkedList<Integer>> primes = new UnorderedLinkedList<>();
 		for (int i = 0; i < 10; i++) {
 			UnorderedLinkedList<Integer> list = new UnorderedLinkedList<>();
@@ -1283,7 +1283,7 @@ public class Utility {
 	 * Method to Check the Prime Numbers which are Anagrams
 	 */
 	public static void primeAnagram(){
-		UnorderedLinkedList<UnorderedLinkedList<Integer>> primes=primeArrayByLL(100);
+		UnorderedLinkedList<UnorderedLinkedList<Integer>> primes=primeArrayByLL();
 		UnorderedLinkedList<Integer> list = new UnorderedLinkedList<>();
 		UnorderedLinkedList<Integer> anagramList= new UnorderedLinkedList<>();
 		UnorderedLinkedList<Integer> nonAnagramList = new UnorderedLinkedList<>();

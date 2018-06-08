@@ -12,14 +12,8 @@ public class MyHashTable {
 		HashTable  myhash = new HashTable(size);
 		
 		for(int i = 0; i<input.length; i++) {
-			myhash.add(Integer.parseInt(input[i]));
+			myhash.add(45);
 		}
-		System.out.println(myhash.display());
-		System.out.println("Enter Element to search");
-		int item = Utility.userIntegerInput();
-		myhash.extendedSearch(item);
-		String output = myhash.display();
-		Utility.fileWriter("file1.txt",output);
-		System.out.println(myhash.display());
+		myhash.display();
 	}
 }

@@ -1,3 +1,12 @@
+/******************************************************************************
+ *  
+ *  Purpose: To Generate a Main User Class to Interact With AddressBook
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   08-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.objectprograms.addressbook;
 
 import java.io.IOException;
@@ -13,35 +22,40 @@ public class UserMain {
 		
 		System.out.println("Welcome to Address Book");
 		AddressBookManager manager= new AddressBookManager();
-		manager.createNewAddresBook();
-		
-		while(option!=7) {
+		System.out.println();
+		//USER MENU
+		while(option!=8) {
 			System.out.println("Enter the proper Choices to Continue...");
-			System.out.println("1:Add Person   2:Delete Person");
-			System.out.println("3:Edit Contact 4:ShowAddressBook");
-			System.out.println("5:Save         6:SortBy FirstName");
-			System.out.println("         7:Exit");
+			System.out.println("1: OPEN/CREATE New AddressBook ");
+			System.out.println("2: ADD a Person 3: DELETE a Person");
+			System.out.println("4: EDIT Contact 5: SHOW AddressBook");
+			System.out.println("6: SAVE         7: SORTBY FirstName");
+			System.out.println("         8:Exit");
 			option=Utility.userIntegerInput();
 			Utility.userStringInput();
 			switch(option) {
 			case 1:
-				manager.addPerson();
+				manager.setFile();
+				manager.createNewAddresBook();
 				break;
 			
 			case 2:
-				manager.deletePerson();
+				manager.addPerson();
 				break;
 				
 			case 3:
-				manager.editPersonDetails();
+				manager.deletePerson();
 				break;
 			case 4:
-				manager.showAddressBook();
+				manager.editPersonDetails();
 				break;
 			case 5:
-				manager.save();
+				manager.showAddressBook();
 				break;
 			case 6:
+				manager.save();
+				break;
+			case 7:
 				manager.sortbyFirstName();
 				break;
 			default:

@@ -1,3 +1,13 @@
+/******************************************************************************
+ *  
+ *  Purpose: To create a Person type Pojo Class
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   08-06-2018
+ *
+ ******************************************************************************/
+
 package com.bridgelabz.objectprograms.addressbook;
 
 public class Person {

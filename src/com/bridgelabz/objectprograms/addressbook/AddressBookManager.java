@@ -1,3 +1,12 @@
+/******************************************************************************
+ *  
+ *  Purpose: To Generate an AddressBookManger class to manage AddressBook
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   08-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.objectprograms.addressbook;
 
 import java.io.IOException;
@@ -10,85 +19,130 @@ public class AddressBookManager {
 	
 	List<Person> tempList;
 	AddressBook book;
+	String fileName;
 	Person person;
+	
 	int addressBookId = 0;
 	
 	AddressBookManager(){
 		System.out.println("Address Manager Initialised");
 	}
 	
+	/**Method to check if addressBook is Empty
+	 * @return boolean true/false
+	 */
 	public boolean isEmpty() {
 		if (addressBookId==0) return true;
 		return false;
 	}
 	
+	/**
+	 * Method to create and Initialize a new addressBook
+	 */
 	public void createNewAddresBook() {
 		book=new AddressBook();
 		openAddressBook();
 	}
 	
+	/**
+	 * Method to open an addressBook
+	 */
 	public void openAddressBook() {
-		if(tempList==null) {
+		
 			try {
-				tempList = AddressBookUtility.readFromJson();
+				//tempList.clear();
+				tempList = AddressBookUtility.readFromJson(fileName);
+					
 			}catch(Exception e) {
-				System.out.println("AddressBook Empty");
 				tempList=new LinkedList<>();
+				System.out.println("Unable to clear list");
 			}
-		}
+		
 		
 
 	}
 	
-	public void addPerson() throws IOException {
-		String firstName=AddressBookUtility.setFirstName();
-		String lastName=AddressBookUtility.setLastName();
-		String address=AddressBookUtility.setAddress();
-		String city = AddressBookUtility.setCity();
-		String state=AddressBookUtility.setState();
-		String zip = AddressBookUtility.setZip();
-		String phoneNumber = AddressBookUtility.setPhoneNumber();
-		person = book.add(firstName, lastName, address, city, state, zip, phoneNumber);
-		
-		tempList.add(person);
-		addressBookId++;
-		
-		
-		System.out.println("Person Added");
-		System.out.println("Click save to Confirm");
+	/**Method to set the fileName for an addressBook
+	 * @throws IOException
+	 */
+	public void setFile() throws IOException {
+		fileName = AddressBookUtility.getFileName();
+		AddressBookUtility.setFileName(fileName);
 		
 	}
 	
+	/*public void getFile() {
+		
+	}*/
+	
+	/**Method to add a Person to the addressBook List
+	 * @throws IOException
+	 */
+	public void addPerson() throws IOException {
+		Person person = new Person();
+		person.setFirstName(AddressBookUtility.setFirstName());
+		person.setLastName(AddressBookUtility.setLastName());
+		person.setAddress(AddressBookUtility.setAddress());
+		person.setCity(AddressBookUtility.setCity());
+		person.setState(AddressBookUtility.setState());
+		person.setZip(AddressBookUtility.setZip());
+		person.setPhoneNumber(AddressBookUtility.setPhoneNumber());
+		
+		tempList.add(person);
+		
+		System.out.println("Person added");
+		System.out.println("Click save to continue");
+	}
+	
+	/**Method to delete a Person from an AddressBook
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void deletePerson() throws IOException, ParseException {
 		String deleteId = AddressBookUtility.setdeleteAddress();
-		tempList = AddressBookUtility.deleteAddress(deleteId);
+		tempList = AddressBookUtility.deleteAddress(deleteId,fileName);
 		System.out.println("Entry Added to Delete");
 		System.out.println("Click save to Confirm");
 	}
 	
+	/**Method to save data to an AddressBook
+	 * @throws IOException
+	 */
 	public void save() throws IOException {
-		AddressBookUtility.saveToJson(tempList);
+		AddressBookUtility.saveToJson(tempList,fileName);
 		System.out.println("File saved");
 	}
-	public void saveAs(String name) {
+	/*public void saveAs(String name) {
 		
-	}
+	}*/
 
+	/**Method to Show Persons in an AddressBook
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void showAddressBook() throws IOException, ParseException {
-		AddressBookUtility.printAddressBook();
+		AddressBookUtility.printAddressBook(fileName);
 	}
 
+	/**Method to Edit a Person Details
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void editPersonDetails() throws IOException, ParseException {
 		int Id =AddressBookUtility.editPersonId();
-		tempList=AddressBookUtility.editPerson(Id);
+		tempList=AddressBookUtility.editPerson(Id,fileName);
 		System.out.println("Contact Edited");
 		System.out.println("Click save to Confirm");
 		
 	}
 
+	/**Method to Sort Persons in an addressBook by their FirstName
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void sortbyFirstName() throws IOException, ParseException {
 		
-		tempList=AddressBookUtility.sortbyFirstName();
+		tempList=AddressBookUtility.sortbyFirstName(fileName);
 		System.out.println("Contacts sorted By FirstName");
 		System.out.println("Click Save to Confirm");
 	}

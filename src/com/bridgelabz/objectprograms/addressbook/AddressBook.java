@@ -1,16 +1,22 @@
+/******************************************************************************
+ *  
+ *  Purpose: To create an AddressBook type Class 
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   08-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.objectprograms.addressbook;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class AddressBook {
 
-	List<AddressBook> list = new LinkedList<>();
+	//List<AddressBook> list = new LinkedList<>();
 	
 	public AddressBook() {
 		System.out.println("Address Book Created");
 	}
-	public Person add(String firstName,String lastName,String address,String city,String state,String zip,String phoneNumber){
+	/*public Person add(String firstName,String lastName,String address,String city,String state,String zip,String phoneNumber){
 		Person person = new Person();
 		
 		person.setFirstName(firstName);
@@ -24,7 +30,7 @@ public class AddressBook {
 		return person;
 		
 	}
-	/*public void delete(Person person) {
+	public void delete(Person person) {
 		list.remove(person);
 	}
 	public void sortByName() {

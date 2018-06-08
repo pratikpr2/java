@@ -1,12 +1,12 @@
 [
 	{
 		"name": "reliance",
-		"numberOfShares": 6000,
-		"sharePrice": 100
+		"numberOfShares": 1000,
+		"sharePrice": 20
 	},
 	{
 		"name": "airtel",
-		"numberOfShares": 4000,
-		"sharePrice": 150
+		"numberOfShares": 1500,
+		"sharePrice": 30
 	}
 ]
