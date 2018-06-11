@@ -1,0 +1,9 @@
+[
+	{
+		"name": "tony",
+		"id": 1,
+		"specialization": "killing",
+		"available": "7am-10am",
+		"patientCount": 1
+	}
+]
