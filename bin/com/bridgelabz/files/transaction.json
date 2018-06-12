@@ -1,0 +1,9 @@
+[
+	{
+		"stockName": "reliance",
+		"stockBought": 200,
+		"customerFirstName": "jim",
+		"customerLastName": "joe",
+		"timeStamp": "2018-06-12 18:31:26"
+	}
+]
