@@ -1,1 +1,1 @@
-[{"name":"tony","id":1,"specialization":"killing","available":"7am-10am","patientCount":3}]
+[{"name":"tony","id":1,"specialization":"killing","available":"5pm-7pm","patientCount":3},{"name":"tom","id":2,"specialization":"heart","available":"10am-2pm","patientCount":4},{"name":"tomy","id":3,"specialization":"kidney","available":"4pm-6pm","patientCount":2}]

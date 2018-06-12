@@ -2,6 +2,7 @@ package com.bridgelabz.serviceImplimentation;
 
 import java.util.List;
 
+import com.bridgelabz.model.Doctor;
 import com.bridgelabz.model.Patient;
 import com.bridgelabz.service.PatientService;
 import com.bridgelabz.utility.ClinicUtility;
@@ -87,16 +88,33 @@ public class PatientServiceImplement implements PatientService {
 
 	
 	@Override
-	public void searchMostPopularDoctor(List<Patient> list) {
+	public void searchMostPopularDoctor(List<Doctor> list) {
 		// TODO Auto-generated method stub
-		
-		
+		int mostPopular = list.get(0).getPatientCount();
+		int last=0;
+		for(int i=1;i<list.size();i++) {
+			if(mostPopular<list.get(i).getPatientCount()) {
+				mostPopular=list.get(i).getPatientCount();
+				last = i;
+			}
+		}
+		String mostPopularDoctor=list.get(last).getName();
+		System.out.println("Most Popular Doctor: "+mostPopularDoctor);
 	}
 
 	@Override
-	public void searchMostPopularSpecialization(List<Patient> list) {
+	public void searchMostPopularSpecialization(List<Doctor> list) {
 		// TODO Auto-generated method stub
-		
+		int mostPopular = list.get(0).getPatientCount();
+		int last=0;
+		for(int i=1;i<list.size();i++) {
+			if(mostPopular<list.get(i).getPatientCount()) {
+				mostPopular=list.get(i).getPatientCount();
+				last = i;
+			}
+		}
+		String mostPopularSpecialization=list.get(last).getSpecialization();
+		System.out.println("Most Popular Specialization: "+mostPopularSpecialization);
 	}
 
 

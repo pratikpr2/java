@@ -91,6 +91,7 @@ public class ManagerServiceImplement implements ManagerService {
 	public void addDoctor() {
 		// TODO Auto-generated method stub
 		Doctor doctor = new Doctor();
+		ClinicUtility.userStringInput();
 		doctor.setName(ClinicUtility.getName());
 		doctor.setId(ClinicUtility.getId());
 		ClinicUtility.userStringInput();
@@ -120,6 +121,7 @@ public class ManagerServiceImplement implements ManagerService {
 	@Override
 	public void updateDoctordetails() {
 		// TODO Auto-generated method stub
+        ClinicUtility.userStringInput();
 		System.out.println("Enter the Name of Doctor to Edit");
 		String name = ClinicUtility.userStringInput();
 		for(int i=0;i<doctorList.size();i++) {
@@ -137,6 +139,7 @@ public class ManagerServiceImplement implements ManagerService {
 	public void addPatient() {
 		// TODO Auto-generated method stub
 		Patient patient = new Patient();
+		ClinicUtility.userStringInput();
 		patient.setName(ClinicUtility.getName());
 		patient.setId(ClinicUtility.getId());
 		ClinicUtility.userStringInput();
@@ -166,6 +169,7 @@ public class ManagerServiceImplement implements ManagerService {
 	@Override
 	public void updatePatientDetails() {
 		// TODO Auto-generated method stub
+		ClinicUtility.userStringInput();
 		System.out.println("Enter the Patients' Name to Update details ");
 		String name = ClinicUtility.userStringInput();
 		for(int i=0;i<patientList.size();i++) {
@@ -184,6 +188,7 @@ public class ManagerServiceImplement implements ManagerService {
 		System.out.println("Select Your Appointment with the Available Doctors Below: ");
 		showDoctors();
 		Appointment appointment = new Appointment();
+		ClinicUtility.userStringInput();
 		System.out.println("Enter the Doctor Name To Book an Appointment");
 		String doctorName = ClinicUtility.userStringInput();
 		System.out.println("Enter The Patient Name to Book For");
@@ -229,6 +234,10 @@ public class ManagerServiceImplement implements ManagerService {
 		ClinicUtility.savePatientList(patientList);
 		ClinicUtility.saveAppointmentList(appointmentList);
 	}
-
-	
+	public void searchPopularDoctor() {
+		patService.searchMostPopularDoctor(doctorList);
+	}
+	public void searchPopularSpecialization() {
+		patService.searchMostPopularSpecialization(doctorList);
+	}
 }
