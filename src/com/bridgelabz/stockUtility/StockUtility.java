@@ -1,6 +1,6 @@
 /******************************************************************************
  *  
- *  Purpose: A Utility Class To Support Stock Manager functions
+ *  Purpose: A Utility Class To Support Stock Manager functions.
  *
  *  @author  Pratik Prakash
  *  @version 1.0
