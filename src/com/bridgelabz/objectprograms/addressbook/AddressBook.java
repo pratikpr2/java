@@ -9,40 +9,32 @@
  ******************************************************************************/
 package com.bridgelabz.objectprograms.addressbook;
 
+import java.util.List;
+
 public class AddressBook {
 
-	//List<AddressBook> list = new LinkedList<>();
-	
+	private List<Person> persons;
+
+	private String fileName;
+
 	public AddressBook() {
 		System.out.println("Address Book Created");
 	}
-	/*public Person add(String firstName,String lastName,String address,String city,String state,String zip,String phoneNumber){
-		Person person = new Person();
-		
-		person.setFirstName(firstName);
-		person.setLastName(lastName);
-		person.setAddress(address);
-		person.setCity(city);
-		person.setState(state);
-		person.setZip(zip);
-		person.setPhoneNumber(phoneNumber);
-		
-		return person;
-		
+
+	public List<Person> getPersons() {
+		return persons;
 	}
-	public void delete(Person person) {
-		list.remove(person);
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
 	}
-	public void sortByName() {
-	
+
+	public String getFileName() {
+		return fileName;
 	}
-	public void sortByZip() {
-	
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-	public void printAddressBook() {
-		
-	}
-	public void addToList(AddressBook person) {
-		list.add(person);
-	}*/
+
 }

@@ -80,10 +80,14 @@ public class AddressBookUtility {
 		List<Person> list = new LinkedList<>();
 		obj = new JSONParser().parse(new FileReader(filename+".json"));
 		JSONArray addressArray = (JSONArray) obj;
-		Person person = new Person();
+		
 		for(Object object: addressArray) {
+			Person person = new Person();
 			JSONObject getPerson = (JSONObject) object;
-			if(!getPerson.get("firstName").toString().equalsIgnoreCase(Id)) {
+			if(getPerson.get("firstName").toString().equalsIgnoreCase(Id)) {
+
+			}
+			else {
 				person.setFirstName(getPerson.get("firstName").toString());
 				person.setLastName(getPerson.get("lastName").toString());
 				person.setAddress(getPerson.get("address").toString());
@@ -311,20 +315,4 @@ public class AddressBookUtility {
 		return null;
 	}
 
-	/*public static List<Person> addPersonDetails() {
-		List<Person> list = new LinkedList<>();
-		
-		Person person = new Person();
-		person.setFirstName(setFirstName());
-		person.setLastName(setLastName());
-		person.setAddress(setAddress());
-		person.setCity(setCity());
-		person.setState(setState());
-		person.setZip(setZip());
-		person.setPhoneNumber(setPhoneNumber());
-		
-		list.add(person);
-		
-		return list;
-	}*/
 }

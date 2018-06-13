@@ -1,49 +1,50 @@
 package com.bridgelabz.dataStructures;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
 public class HashTable {
+
+	UnorderedLinkedList<Integer>[] list ;
 	int size;
-	List<Integer>[] list ;
-	HashMap<Integer, List<Integer>> map = new HashMap<>(); 
 	
-	public HashTable(int size) {
+	public HashTable(int size){
 		this.size=size;
-		
+		list = new UnorderedLinkedList[size];
+		for(int i=0;i<size;i++) {
+		list[i]=new UnorderedLinkedList<Integer>();
+		}
 	}
 	public void add(int item) {
-		int position = item%(size);
-		list[position]= new LinkedList<>();
+		int position=item%size;
 		list[position].add(item);
-		map.put(position,list[position]);
 	}
-	public void display() {
-		System.out.println(map);
-	}
-	/*public boolean search(Comparable item) {
-		for(int i =0;i<arr.length;i++) {
-			if(arr[i].search(item)==true)
+	
+	public boolean search(int item) {
+		for(int i =0;i<size;i++) {
+			if(list[i].search(item))
 				return true;
 		}
 		return false;
 	}
-	public void extendedSearch(Comparable item) {
-		for(int i =0;i<arr.length;i++) {
-			
-			if(arr[i].search(item))
+	
+	public void remove(int item) {
+		for(int i=0;i<size;i++) {
+			if(list[i].search(item))
 			{
-				System.out.println(item+ " found");
-				arr[i].remove(item);
-				break;
+				list[i].remove(item);
 			}
-			else {
-				System.out.println("Not Found Adding to List");
-				arr[i].add(item);
-				
-				
-			}
-		}*/	
-		
+		}
 	}
+	
+	public void display() {
+		for(int i =0;i<size;i++) {
+			list[i].genDisplay();
+		}
+	}
+	public String stringDisplay() {
+		String str = "";
+		for(int i=0;i<size;i++) {
+			str = str+list[i].display();
+		}
+		return str;
+	}
+	
+}

@@ -17,10 +17,10 @@ import org.json.simple.parser.ParseException;
 
 public class AddressBookManager {
 	
-	List<Person> tempList;
-	AddressBook book;
-	String fileName;
-	Person person;
+	private List<Person> tempList;
+	private AddressBook book;
+	private String fileName;
+	//Person person;
 	
 	int addressBookId = 0;
 	

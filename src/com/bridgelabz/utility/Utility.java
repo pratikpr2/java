@@ -25,26 +25,7 @@ import java.io.PrintWriter;
 import java.lang.Math;
 import java.lang.System;
 
-/**
- * @author bridgelabz
- *
- */
-/**
- * @author bridgelabz
- *
- */
-/**
- * @author bridgelabz
- *
- */
-/**
- * @author bridgelabz
- *
- */
-/**
- * @author bridgelabz
- *
- */
+
 public class Utility {
 	/*
 	 * Static Variables declared to create static objects
