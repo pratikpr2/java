@@ -1,10 +1,19 @@
+/******************************************************************************
+ *  
+ *  Purpose: To Implement Manager Services methods
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   13-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.serviceImplement;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.codehaus.jackson.map.JsonMappingException;
+import java.util.Queue;
+import java.util.Stack;
 
 import com.bridgelabz.model.Customer;
 import com.bridgelabz.model.Stock;
@@ -17,6 +26,8 @@ public class ManagerServiceImplement implements ManagerService {
 	private List<Stock> stockList;
 	private List<Customer> customerList;
 	private List<Transaction> transactionList;
+	List<String> stackList=new Stack<>();
+	Queue<String> queList = new LinkedList<>();
 	CustomerServiceImplement customerService;
 	StockServiceImplement stockService;
 	
@@ -82,7 +93,9 @@ public class ManagerServiceImplement implements ManagerService {
 	}
 
 	public void showCustomerDetails() {
+		System.out.println("***************");
 		System.out.println("Customers List");
+		System.out.println("***************");
 		customerService.showCustomers(customerList);
 	}
 	@Override
@@ -131,6 +144,7 @@ public class ManagerServiceImplement implements ManagerService {
 				transaction.setTimeStamp(StockUtility.getTimeStamp());
 				
 				stockList.get(index).setNumberOfStocks(numberOfShares+numberOfStocks);
+				stackList.add(stockList.get(index).getStockName());
 				transactionList.add(transaction);
 				System.out.println("Transaction SuccessFul !");
 				return;
@@ -162,6 +176,7 @@ public class ManagerServiceImplement implements ManagerService {
 			for(int i=0;i<stockList.size();i++) {
 				if(stockList.get(i).getStockName().equals(stockName)) {
 					stockList.get(i).setNumberOfStocks(stockList.get(i).getNumberOfStocks()-stockBought);
+					stackList.add(stockName);
 					System.out.println("Transaction SuccessFul !");
 				}
 			}
@@ -199,7 +214,18 @@ public class ManagerServiceImplement implements ManagerService {
 		stockService.totalStockPrice(stockList);
 		
 	}
-
+	
+	public void showtransactionStack() {
+		System.out.println("Last Purchased/Sold Stocks");
+		for(int i=0;i<transactionList.size();i++) {
+			stackList.add(transactionList.get(i).getStockName());
+		}
+		if(stackList!=null) {
+			System.out.println("Stock Name :"+stackList);
+			System.out.println("----------------------------");
+		}
+	}
+	
 	@Override
 	public double valueOf() {
 		// TODO Auto-generated method stub
@@ -208,8 +234,25 @@ public class ManagerServiceImplement implements ManagerService {
 
 	public void showStockDetails() {
 		// TODO Auto-generated method stub
+		System.out.println("***********");
 		System.out.println("Stock List");
+		System.out.println("***********");
 		stockService.showStocks(stockList);
+	}
+
+	public void showtransactionQueue() {
+		// TODO Auto-generated method stub
+		System.out.println("Last Transaction Details");
+		for(int i=0;i<transactionList.size();i++) {
+			queList.add(transactionList.get(i).getTimeStamp());
+		}
+		if(queList!=null) {
+			{
+				System.out.println("TIMESTAMPS: "+queList);
+				System.out.println("----------------------------");
+
+			}
+		}
 	}
 
 }

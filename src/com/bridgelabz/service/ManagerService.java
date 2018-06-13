@@ -1,3 +1,12 @@
+/******************************************************************************
+ *  
+ *  Purpose: To Create an Interface for Stock Manager
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   13-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.service;
 
 import java.io.IOException;

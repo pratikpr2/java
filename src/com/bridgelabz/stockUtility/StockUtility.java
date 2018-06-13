@@ -1,7 +1,15 @@
+/******************************************************************************
+ *  
+ *  Purpose: A Utility Class To Support Stock Manager functions
+ *
+ *  @author  Pratik Prakash
+ *  @version 1.0
+ *  @since   13-06-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.stockUtility;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,7 +18,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
@@ -21,7 +28,6 @@ import org.json.simple.parser.ParseException;
 import com.bridgelabz.model.Transaction;
 import com.bridgelabz.model.Customer;
 import com.bridgelabz.model.Stock;
-import com.bridgelabz.model.Transaction;
 
 public class StockUtility {
 
@@ -30,6 +36,9 @@ public class StockUtility {
 	static Scanner scanner = new Scanner(System.in);
 	static int i;
 	
+	/**
+	 * @return an integer input
+	 */
 	public static int userIntegerInput() {
 		try {
 			int number = scanner.nextInt();
@@ -42,36 +51,62 @@ public class StockUtility {
 
 	}
 	
+	/**
+	 * @return a string input
+	 */
 	public static String userStringInput() {
 		String string = scanner.nextLine();
 		return string;
 	}
 	
+	/**
+	 * @return the stock Name input
+	 */
 	public static String getStockName() {
 		System.out.println("Enter stock Name: ");
 		return userStringInput();
 	}
+	/**
+	 * @return the number of stock input
+	 */
 	public static int getNumberofStocks() {
 		System.out.println("Enter the Number of stocks");
 		return userIntegerInput();
 	}
+	/**
+	 * @return the stock value input
+	 */
 	public static int getStockValue() {
 		System.out.println("Enter the stock Value");
 		return userIntegerInput();
 	}
+	/**
+	 * @return the first name input
+	 */
 	public static String getFirstName() {
 		System.out.println("Enter the First Name");
 		return userStringInput();
 	}
+	/**
+	 * @return the last name input
+	 */
 	public static String getLastName() {
 		System.out.println("Enter the Last Name");
 		return userStringInput();
 	}
+	/**
+	 * @return the phone number input
+	 */
 	public static String getphoneNumber() {
 		System.out.println("Enter Contact Number");
 		return userStringInput();
 	}
 
+	/**
+	 * @return the stockList from stock json file
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static List<Stock> readstockList() throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		List<Stock> list = new LinkedList<>();
@@ -89,6 +124,11 @@ public class StockUtility {
 		return list;
 	}
 
+	/**
+	 * @return the customer List from customer json file
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static List<Customer> readCustomerList() throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		List<Customer> list = new LinkedList<>();
@@ -107,6 +147,11 @@ public class StockUtility {
 		return list;
 	}
 
+	/**
+	 * @return the transaction list from transaction json file
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static List<Transaction> readTransactionList() throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		List<Transaction> list = new LinkedList<>();
@@ -125,16 +170,29 @@ public class StockUtility {
 		return list;
 	}
 
+	/**
+	 * @param customerList to add customer list to customer json file
+	 * @throws IOException
+	 * @throws JsonMappingException
+	 */
 	public static void saveCustomerList(List<Customer> customerList) throws IOException, JsonMappingException{
 		// TODO Auto-generated method stub
 		mapper.writeValue(new File("/home/bridgelabz/mycodes/stockManagementSystem/src/com/bridgelabz/files/customer.json"), customerList);
 	}
 
+	/**
+	 * @param stockList to add stock list to stock json file
+	 * @throws IOException
+	 * @throws JsonMappingException
+	 */
 	public static void saveStockList(List<Stock> stockList) throws IOException, JsonMappingException{
 		// TODO Auto-generated method stub
 		mapper.writeValue(new File("/home/bridgelabz/mycodes/stockManagementSystem/src/com/bridgelabz/files/stock.json"), stockList);
 
 	}
+	/**
+	 * @return the generated timestamp from the system
+	 */
 	public static String getTimeStamp() {
 		SimpleDateFormat sdfDate= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date now = new Date();
@@ -142,6 +200,11 @@ public class StockUtility {
 		return strDate;
 	}
 
+	/**
+	 * @param transactionList to add transaction list to transaction json file
+	 * @throws IOException
+	 * @throws JsonMappingException
+	 */
 	public static void saveTransactionList(List<Transaction> transactionList) throws IOException, JsonMappingException {
 		// TODO Auto-generated method stub
 		mapper.writeValue(new File("/home/bridgelabz/mycodes/stockManagementSystem/src/com/bridgelabz/files/transaction.json"), transactionList);

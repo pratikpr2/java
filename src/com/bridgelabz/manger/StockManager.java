@@ -13,7 +13,7 @@ public class StockManager {
 	public static void main(String[] args) throws IOException {
 		
 		manager = new ManagerServiceImplement();
-	
+		//Menu
 		while(option != 9) {
 			System.out.println("****************************");
 			System.out.println("  Welcome To Stock Manager");
@@ -26,6 +26,8 @@ public class StockManager {
 			System.out.println("7: SAVE CHANGES|| 8: DO TRANSACTION");
 			System.out.println("           9: EXIT");
 			System.out.println("****************************");
+			manager.showtransactionStack();
+			manager.showtransactionQueue();
 			option = StockUtility.userIntegerInput();
 			switch(option) {
 			case 1:
@@ -60,7 +62,7 @@ public class StockManager {
 			}
 		}
 	}
-
+	//Menu2
 	private static void transaction() throws IOException {
 		// TODO Auto-generated method stub
 		int option1= 0;

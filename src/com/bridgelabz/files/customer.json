@@ -1,1 +1,14 @@
-[{"firstName":"jim","lastName":"joe","id":1,"phoneNumber":"9999990909"}]
+[
+	{
+		"firstName": "jim",
+		"lastName": "joe",
+		"id": 1,
+		"phoneNumber": "9999990909"
+	},
+	{
+		"firstName": "tom",
+		"lastName": "bell",
+		"id": 2,
+		"phoneNumber": "9876567890"
+	}
+]

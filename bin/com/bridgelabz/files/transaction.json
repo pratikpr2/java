@@ -5,5 +5,12 @@
 		"customerFirstName": "jim",
 		"customerLastName": "joe",
 		"timeStamp": "2018-06-12 18:31:26"
+	},
+	{
+		"stockName": "airtel",
+		"stockBought": 100,
+		"customerFirstName": "tom",
+		"customerLastName": "bell",
+		"timeStamp": "2018-06-13 10:02:09"
 	}
 ]

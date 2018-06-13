@@ -3,5 +3,10 @@
 		"stockName": "reliance",
 		"stockValue": 200,
 		"numberOfStocks": 3200
+	},
+	{
+		"stockName": "airtel",
+		"stockValue": 200,
+		"numberOfStocks": 1100
 	}
 ]
