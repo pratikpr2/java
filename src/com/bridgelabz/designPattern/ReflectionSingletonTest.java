@@ -5,15 +5,15 @@ import java.lang.reflect.Constructor;
 public class ReflectionSingletonTest {
 
 	public static void main(String[] args) {
-		EagerInitialization instanceOne = EagerInitialization.getInstance();
+		EnumSingleton instanceOne = EnumSingleton.INSTANCE ;
 		
-		EagerInitialization instanceTwo = null;
+		EnumSingleton instanceTwo = null;
 		
 		try {
-			Constructor[] constructors = EagerInitialization.class.getDeclaredConstructors();
+			Constructor[] constructors = EnumSingleton.class.getDeclaredConstructors();
 			for(Constructor constructor:constructors ) {
 				constructor.setAccessible(true);
-				instanceTwo = (EagerInitialization)constructor.newInstance();
+				instanceTwo = (EnumSingleton)constructor.newInstance();
 				break;
 			}
 		}catch(Exception e) {

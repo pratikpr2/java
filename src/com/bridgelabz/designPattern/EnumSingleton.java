@@ -6,6 +6,8 @@ public enum EnumSingleton {
 		System.out.println("This is singleton");
 	}
 	public static void main(String[] args) {
-		EnumSingleton.singleton();
+		System.out.println(EnumSingleton.INSTANCE.hashCode());
+		System.out.println(EnumSingleton.INSTANCE.hashCode());
+		
 	}
 }
