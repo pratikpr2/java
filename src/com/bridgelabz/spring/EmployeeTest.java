@@ -18,6 +18,7 @@ public class EmployeeTest {
 		Employee employee2 = (Employee)factory.getBean("emp");
 		employee2.show();
 		System.out.println(employee2.hashCode());
+	
 	}
 	
 }

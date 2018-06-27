@@ -1,0 +1,16 @@
+package com.bridgelabz.factorydi;
+
+public class A {
+
+	public static final A obj=new A();
+	private A() {
+		System.out.println("Private Constructor");
+	}
+	public static  A getA() {
+		System.out.println("factory Method");
+		return obj;
+	}
+	public void msg() {
+		System.out.println("Hello user");
+	}
+}
